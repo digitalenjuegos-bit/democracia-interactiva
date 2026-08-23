@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Democracia: Ayer y Hoy | Colegio Logos Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   DEMOCRACIA: AYER Y HOY — Estilo Clásico Histórico + Cívico
+   Colegio Logos Academy · Educación para la Ciudadanía
+   ========================================================= */
+:root{
+  --cream:#F5EFE0;
+  --cream-2:#EFE7D2;
+  --ink:#2A1810;
+  --ink-soft:#3D2E22;
+  --gold:#C9A961;
+  --gold-deep:#A8863D;
+  --civic:#1E3A5F;
+  --civic-deep:#15283F;
+  --red:#8B2E1C;
+  --green:#3F6B45;
+  --paper-line:rgba(42,24,16,0.06);
+  --shadow:0 18px 40px -18px rgba(42,24,16,0.45);
+  --shadow-soft:0 8px 24px -10px rgba(42,24,16,0.25);
+  --font-display:'Playfair Display', Georgia, serif;
+  --font-body:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;width:100%;overflow:hidden}
+body{
+  font-family:var(--font-body);
+  background:var(--cream);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ====== MARBLE / PARCHMENT TEXTURE ====== */
+.texture-marble{
+  background-color:var(--cream);
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(201,169,97,0.4) 0, transparent 35%),
+    radial-gradient(circle at 82% 78%, rgba(30,58,95,0.06) 0, transparent 38%),
+    radial-gradient(circle at 50% 50%, rgba(166,61,42,0.03) 0, transparent 50%),
+    repeating-linear-gradient(125deg, transparent 0 3px, rgba(42,24,16,0.012) 3px 4px),
+    repeating-linear-gradient(55deg, transparent 0 7px, rgba(201,169,97,0.318) 7px 8px);
+}
+.texture-marble::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(201,169,97,0.38), transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(30,58,95,0.05), transparent 50%);
+  mix-blend-mode:multiply;
+}
+
+/* ====== LAYOUT APP ====== */
+#app{
+  position:relative;width:100vw;height:100vh;
+  display:grid;grid-template-columns:auto 1fr auto;
+  background:var(--cream);
+}
+
+/* ====== SIDEBAR ====== */
+#sidebar{
+  width:240px;background:var(--civic-deep);color:var(--cream);
+  display:flex;flex-direction:column;z-index:30;
+  transition:transform .35s cubic-bezier(.7,0,.2,1);
+  border-right:1px solid rgba(201,169,97,0.55);
+}
+#sidebar.collapsed{transform:translateX(-240px)}
+#sidebar .brand{
+  padding:18px 20px 14px;border-bottom:1px solid rgba(201,169,97,0.5);
+  display:flex;align-items:center;gap:10px;
+}
+#sidebar .brand svg{width:32px;height:32px;flex-shrink:0}
+#sidebar .brand .brand-text{font-family:var(--font-display);font-size:14px;line-height:1.2;font-weight:600;color:var(--gold)}
+#sidebar .brand .brand-sub{font-size:12px;color:rgba(245,239,224,0.9);letter-spacing:0.08em;text-transform:uppercase;margin-top:3px}
+#sidebar .toc{flex:1;overflow-y:auto;padding:10px 0}
+#sidebar .toc::-webkit-scrollbar{width:5px}
+#sidebar .toc::-webkit-scrollbar-thumb{background:rgba(201,169,97,0.6);border-radius:3px}
+.toc-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 18px;cursor:pointer;font-size:12.5px;
+  color:rgba(245,239,224,0.7);
+  border-left:3px solid transparent;
+  transition:all .2s;
+}
+.toc-item:hover{background:rgba(201,169,97,0.38);color:var(--cream)}
+.toc-item.active{
+  background:rgba(201,169,97,0.42);color:var(--gold);
+  border-left-color:var(--gold);
+}
+.toc-item .num{
+  font-family:var(--font-display);font-size:12.5px;
+  color:rgba(201,169,97,0.7);width:22px;text-align:right;
+}
+.toc-item.active .num{color:var(--gold)}
+#sidebar .sidebar-foot{
+  padding:12px 18px;border-top:1px solid rgba(201,169,97,0.5);
+  font-size:12px;color:rgba(245,239,224,0.75);line-height:1.5;
+}
+
+/* ====== MAIN STAGE ====== */
+#stage{
+  position:relative;overflow:hidden;
+  background-color:var(--cream);
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(201,169,97,0.4) 0, transparent 35%),
+    radial-gradient(circle at 82% 78%, rgba(30,58,95,0.06) 0, transparent 38%),
+    radial-gradient(circle at 50% 50%, rgba(166,61,42,0.03) 0, transparent 50%),
+    repeating-linear-gradient(125deg, transparent 0 3px, rgba(42,24,16,0.012) 3px 4px),
+    repeating-linear-gradient(55deg, transparent 0 7px, rgba(201,169,97,0.318) 7px 8px);
+}
+#slides-container{
+  position:absolute;inset:0;
+}
+.slide{
+  position:absolute;inset:0;
+  opacity:0;visibility:hidden;
+  transform:translateX(40px);
+  transition:opacity .55s ease, transform .55s cubic-bezier(.4,0,.2,1), visibility 0s linear .55s;
+  overflow:hidden;
+}
+.slide.active{
+  opacity:1;visibility:visible;transform:translateX(0);
+  transition:opacity .55s ease, transform .55s cubic-bezier(.4,0,.2,1), visibility 0s linear 0s;
+  z-index:5;
+}
+.slide.prev{transform:translateX(-40px)}
+
+/* ====== SLIDE INNER PADDING ====== */
+.slide-inner{
+  position:relative;width:100%;height:100%;
+  padding:48px 64px 56px;
+  display:flex;flex-direction:column;
+  overflow-y:auto;
+}
+.slide-inner::-webkit-scrollbar{width:6px}
+.slide-inner::-webkit-scrollbar-thumb{background:rgba(42,24,16,0.15);border-radius:3px}
+
+/* ====== TYPOGRAPHY HELPERS ====== */
+.slide-eyebrow{
+  font-family:var(--font-body);font-size:12.5px;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--ink);font-weight:700;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.slide-eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
+.slide-title{
+  font-family:var(--font-display);font-weight:700;
+  color:var(--ink);line-height:1.1;
+  margin:8px 0 4px;
+}
+.slide-subtitle{
+  font-family:var(--font-display);font-style:italic;
+  color:var(--ink-soft);font-size:16px;line-height:1.4;
+  margin-bottom:14px;max-width:90%;
+}
+.body-text{font-size:14px;line-height:1.55;color:var(--ink)}
+.body-text p+p{margin-top:8px}
+.divider-gold{
+  width:60px;height:3px;background:var(--gold);
+  margin:8px 0 14px;border-radius:2px;
+}
+
+/* ====== TOP CONTROLS BAR ====== */
+#topbar{
+  position:absolute;top:0;left:0;right:0;height:0;
+  z-index:25;display:flex;align-items:center;justify-content:space-between;
+  pointer-events:none;
+}
+#topbar > *{pointer-events:auto}
+.menu-btn{
+  position:absolute;top:14px;left:14px;
+  width:38px;height:38px;border:none;border-radius:50%;
+  background:rgba(30,58,95,0.9);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;
+  box-shadow:var(--shadow-soft);
+}
+.menu-btn:hover{background:var(--gold);color:var(--ink);transform:scale(1.05)}
+.menu-btn svg{width:18px;height:18px}
+
+.topbar-right{
+  position:absolute;top:14px;right:18px;
+  display:flex;gap:8px;
+}
+.icon-btn{
+  width:36px;height:36px;border:1px solid rgba(201,169,97,0.7);
+  background:rgba(245,239,224,0.92);color:var(--civic);
+  border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+  backdrop-filter:blur(4px);
+}
+.icon-btn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);transform:scale(1.05)}
+.icon-btn.active{background:var(--civic);color:var(--cream);border-color:var(--civic)}
+.icon-btn svg{width:16px;height:16px}
+
+/* ====== PROGRESS BAR ====== */
+#progress-track{
+  position:absolute;bottom:0;left:0;right:0;height:4px;
+  background:rgba(42,24,16,0.12);z-index:20;
+}
+#progress-fill{
+  height:100%;width:0;background:linear-gradient(90deg, var(--gold) 0%, var(--gold-deep) 100%);
+  transition:width .4s cubic-bezier(.4,0,.2,1);
+}
+#slide-counter{
+  position:absolute;bottom:14px;right:24px;z-index:20;
+  font-family:var(--font-display);font-size:13px;color:var(--ink-soft);
+  background:rgba(245,239,224,0.85);padding:4px 12px;border-radius:14px;
+  border:1px solid rgba(201,169,97,0.6);
+}
+#slide-counter .current{color:var(--civic);font-weight:700}
+
+/* ====== NAV ARROWS ====== */
+.nav-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(30,58,95,0.92);color:var(--cream);
+  border:1px solid rgba(201,169,97,0.7);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:15;transition:all .2s;
+  box-shadow:var(--shadow-soft);
+}
+.nav-arrow:hover{background:var(--gold);color:var(--ink);transform:translateY(-50%) scale(1.08)}
+.nav-arrow:disabled{opacity:.3;cursor:not-allowed;transform:translateY(-50%)}
+.nav-arrow.prev{left:14px}
+.nav-arrow.next{right:14px}
+.nav-arrow svg{width:20px;height:20px}
+
+/* ====== SPEAKER NOTES PANEL ====== */
+#notes-panel{
+  position:absolute;top:0;right:0;bottom:0;width:340px;
+  background:var(--civic-deep);color:var(--cream);
+  transform:translateX(340px);transition:transform .35s cubic-bezier(.7,0,.2,1);
+  z-index:40;display:flex;flex-direction:column;
+  border-left:1px solid rgba(201,169,97,0.6);
+  box-shadow:-20px 0 40px -10px rgba(0,0,0,0.4);
+}
+#notes-panel.open{transform:translateX(0)}
+#notes-panel .np-head{
+  padding:18px 20px 14px;border-bottom:1px solid rgba(201,169,97,0.5);
+  display:flex;align-items:center;justify-content:space-between;
+}
+#notes-panel .np-head h3{
+  font-family:var(--font-display);font-size:15px;color:var(--gold);
+  display:flex;align-items:center;gap:8px;
+}
+#notes-panel .np-head h3 svg{width:18px;height:18px}
+#notes-panel .np-close{
+  background:none;border:none;color:rgba(245,239,224,0.9);
+  cursor:pointer;font-size:20px;width:28px;height:28px;
+  border-radius:50%;transition:all .2s;
+}
+#notes-panel .np-close:hover{background:rgba(201,169,97,0.44999999999999996);color:var(--cream)}
+#notes-panel .np-body{
+  flex:1;overflow-y:auto;padding:18px 20px;
+}
+#notes-panel .np-body::-webkit-scrollbar{width:5px}
+#notes-panel .np-body::-webkit-scrollbar-thumb{background:rgba(201,169,97,0.6);border-radius:3px}
+#notes-panel .np-slide-title{
+  font-family:var(--font-display);font-size:13px;color:var(--gold);
+  font-style:italic;margin-bottom:10px;line-height:1.3;
+}
+#notes-panel .np-text{
+  font-size:13px;line-height:1.7;color:rgba(245,239,224,0.9);
+  font-family:var(--font-body);
+}
+#notes-panel .np-foot{
+  padding:12px 20px;border-top:1px solid rgba(201,169,97,0.5);
+  font-size:12px;color:rgba(245,239,224,0.8);letter-spacing:0.08em;
+  text-transform:uppercase;text-align:center;
+}
+
+/* ====================================================
+   SLIDE 1 — PORTADA
+   ==================================================== */
+#slide-1 .slide-inner{padding:0;align-items:center;justify-content:center;text-align:center}
+.cover-bg{
+  position:absolute;inset:0;overflow:hidden;
+}
+.cover-bg svg.bg-art{
+  position:absolute;width:100%;height:100%;opacity:0.10;
+}
+.cover-bg::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at center, transparent 0%, rgba(245,239,224,0.75) 70%, rgba(245,239,224,0.85) 100%);
+}
+.cover-content{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;
+  max-width:920px;padding:0 40px;
+}
+.cover-emblem{
+  width:280px;height:120px;margin-bottom:18px;
+  display:flex;align-items:center;justify-content:center;
+  filter:drop-shadow(0 6px 16px rgba(42,24,16,0.25));
+}
+.cover-emblem svg{width:100%;height:100%}
+.cover-eyebrow{
+  font-size:12.5px;letter-spacing:0.32em;text-transform:uppercase;
+  color:var(--civic);font-weight:600;margin-bottom:12px;
+}
+.cover-title{
+  font-family:var(--font-display);font-weight:900;
+  font-size:84px;line-height:0.95;color:var(--ink);
+  letter-spacing:-0.02em;margin-bottom:8px;
+}
+.cover-title .amp{color:var(--gold);font-style:italic;font-weight:400}
+.cover-rule{
+  width:80px;height:4px;background:var(--gold);margin:14px 0 18px;border-radius:2px;
+  position:relative;
+}
+.cover-rule::before, .cover-rule::after{
+  content:"";position:absolute;top:50%;width:6px;height:6px;
+  background:var(--gold);border-radius:50%;transform:translateY(-50%);
+}
+.cover-rule::before{left:-14px}
+.cover-rule::after{right:-14px}
+.cover-subtitle{
+  font-family:var(--font-display);font-style:italic;
+  font-size:19px;line-height:1.45;color:var(--ink);
+  max-width:720px;margin:0 auto 24px;
+}
+.cover-foot{
+  font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--ink);font-weight:500;margin-bottom:22px;
+}
+.cover-foot .dot{color:var(--gold);margin:0 8px}
+.start-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 32px;background:var(--civic);color:var(--cream);
+  border:none;border-radius:30px;cursor:pointer;
+  font-family:var(--font-body);font-size:14px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  transition:all .25s;box-shadow:0 8px 20px -8px rgba(30,58,95,0.6);
+  border:1px solid var(--gold);
+}
+.start-btn:hover{background:var(--gold);color:var(--ink);transform:translateY(-2px);box-shadow:0 12px 26px -8px rgba(201,169,97,0.6)}
+.start-btn svg{width:16px;height:16px;transition:transform .25s}
+.start-btn:hover svg{transform:translateX(4px)}
+
+/* ====================================================
+   SLIDE 2 — INTRODUCCIÓN
+   ==================================================== */
+.intro-grid{
+  display:grid;grid-template-columns:1.4fr 1fr;gap:32px;flex:1;
+  margin-top:8px;
+}
+.intro-left p{margin-bottom:10px;font-size:14px;line-height:1.6}
+.question-box{
+  background:linear-gradient(135deg, rgba(201,169,97,0.42), rgba(30,58,95,0.06));
+  border-left:4px solid var(--gold);
+  padding:16px 20px;border-radius:0 8px 8px 0;
+  margin-bottom:14px;
+}
+.question-box .qlabel{
+  font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--ink);font-weight:600;margin-bottom:6px;
+}
+.question-box .qtext{
+  font-family:var(--font-display);font-style:italic;
+  font-size:16px;line-height:1.4;color:var(--ink);
+}
+.challenges-title{
+  font-family:var(--font-display);font-size:18px;color:var(--ink);
+  font-weight:600;margin:8px 0 10px;
+  display:flex;align-items:center;gap:8px;
+}
+.challenges-title svg{width:20px;height:20px;color:var(--gold)}
+.challenge-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.challenge-item{
+  display:flex;gap:10px;font-size:13px;line-height:1.5;
+  padding:10px 12px;background:rgba(255,255,255,0.4);
+  border-radius:6px;border:1px solid rgba(201,169,97,0.5);
+}
+.challenge-num{
+  font-family:var(--font-display);font-size:22px;font-weight:700;
+  color:var(--gold);line-height:1;flex-shrink:0;width:26px;
+}
+.intro-right{
+  background:var(--civic);color:var(--cream);
+  border-radius:12px;padding:24px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.intro-right::before{
+  content:"";position:absolute;top:-30px;right:-30px;
+  width:140px;height:140px;border:2px solid rgba(201,169,97,0.5);
+  border-radius:50%;
+}
+.intro-right::after{
+  content:"";position:absolute;bottom:-50px;left:-20px;
+  width:120px;height:120px;border:2px solid rgba(201,169,97,0.44999999999999996);
+  border-radius:50%;
+}
+.eval-block{position:relative;z-index:1}
+.eval-label{
+  font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;margin-bottom:6px;
+}
+.eval-title{
+  font-family:var(--font-display);font-size:20px;color:var(--cream);
+  margin-bottom:14px;line-height:1.2;
+}
+.eval-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px dashed rgba(201,169,97,0.55);
+  font-size:12.5px;
+}
+.eval-row:last-child{border-bottom:none}
+.eval-row .pct{font-family:var(--font-display);font-size:18px;color:var(--gold);font-weight:700}
+.eval-bar{
+  width:80px;height:5px;background:rgba(245,239,224,0.75);
+  border-radius:3px;overflow:hidden;margin-top:6px;
+}
+.eval-bar div{height:100%;background:var(--gold)}
+
+/* ====================================================
+   SLIDE 3 — FLIPCARDS GRECIA / ROMA
+   ==================================================== */
+.flipcard-stage{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;
+  margin-top:10px;
+}
+.flipcard{
+  perspective:1400px;cursor:pointer;
+  height:100%;min-height:430px;
+}
+.flipcard-inner{
+  position:relative;width:100%;height:100%;
+  transition:transform .8s cubic-bezier(.4,0,.2,1);
+  transform-style:preserve-3d;
+}
+.flipcard.flipped .flipcard-inner{transform:rotateY(180deg)}
+.flipcard-face{
+  position:absolute;inset:0;backface-visibility:hidden;
+  border-radius:14px;padding:22px;
+  display:flex;flex-direction:column;
+  box-shadow:var(--shadow);
+}
+.flipcard-front{
+  background:linear-gradient(160deg, var(--cream) 0%, var(--cream-2) 100%);
+  border:1px solid rgba(201,169,97,0.6);
+  align-items:center;text-align:center;justify-content:center;
+}
+.flipcard-back{
+  background:linear-gradient(160deg, var(--civic) 0%, var(--civic-deep) 100%);
+  color:var(--cream);transform:rotateY(180deg);
+  border:1px solid rgba(201,169,97,0.7);
+  justify-content:flex-start;text-align:left;
+}
+.flipcard.grecia .flipcard-front{border-top:5px solid var(--gold)}
+.flipcard.roma .flipcard-front{border-top:5px solid var(--red)}
+.flipcard-icon{
+  width:80px;height:80px;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.flipcard-icon svg{width:100%;height:100%}
+.flipcard-title{
+  font-family:var(--font-display);font-size:32px;font-weight:700;
+  color:var(--ink);line-height:1;
+}
+.flipcard-tag{
+  font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--civic);font-weight:600;margin-top:6px;
+}
+.flipcard-hint{
+  margin-top:auto;font-size:12.5px;color:var(--ink-soft);
+  display:flex;align-items:center;gap:6px;
+}
+.flipcard-hint svg{width:13px;height:13px}
+.flipcard-back .bc-title{
+  font-family:var(--font-display);font-size:18px;color:var(--gold);
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid rgba(201,169,97,0.6);padding-bottom:6px;
+}
+.flipcard-back .bc-title svg{width:18px;height:18px}
+.flipcard-back dl{flex:1;overflow-y:auto}
+.flipcard-back dl::-webkit-scrollbar{width:4px}
+.flipcard-back dl::-webkit-scrollbar-thumb{background:rgba(201,169,97,0.6)}
+.flipcard-back dt{
+  font-family:var(--font-display);font-weight:600;color:var(--gold);
+  font-size:13px;margin-top:8px;
+}
+.flipcard-back dt:first-child{margin-top:0}
+.flipcard-back dd{
+  font-size:13px;line-height:1.5;color:rgba(245,239,224,0.88);
+  margin-top:2px;
+}
+.concepts-strip{
+  margin-top:14px;padding:12px 18px;
+  background:rgba(30,58,95,0.06);border:1px solid rgba(201,169,97,0.6);
+  border-radius:8px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.concepts-strip .clabel{
+  font-size:12px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--civic);font-weight:600;
+}
+.concept-chip{
+  font-size:13px;padding:4px 11px;
+  background:rgba(201,169,97,0.48);color:var(--ink);
+  border-radius:14px;border:1px solid rgba(201,169,97,0.7);
+  font-weight:500;
+}
+
+/* ====================================================
+   SLIDE 4 — TIMELINE
+   ==================================================== */
+.timeline-wrap{flex:1;display:flex;flex-direction:column;margin-top:8px;min-height:0}
+.timeline-track{
+  position:relative;height:120px;margin:18px 0 14px;
+  display:flex;align-items:center;
+}
+.timeline-line{
+  position:absolute;left:0;right:0;top:50%;height:3px;
+  background:linear-gradient(90deg, var(--gold) 0%, var(--civic) 50%, var(--red) 100%);
+  border-radius:2px;
+}
+.timeline-points{
+  position:relative;display:flex;justify-content:space-between;
+  width:100%;z-index:2;
+}
+.tl-point{
+  display:flex;flex-direction:column;align-items:center;
+  cursor:pointer;flex:1;min-width:0;
+}
+.tl-dot{
+  width:18px;height:18px;border-radius:50%;
+  background:var(--cream);border:3px solid var(--civic);
+  transition:all .25s;position:relative;z-index:2;
+}
+.tl-point:hover .tl-dot, .tl-point.active .tl-dot{
+  background:var(--gold);border-color:var(--ink);
+  transform:scale(1.25);box-shadow:0 0 0 6px rgba(201,169,97,0.48);
+}
+.tl-year{
+  font-family:var(--font-display);font-size:12.5px;font-weight:700;
+  color:var(--civic);margin-top:8px;white-space:nowrap;
+  text-align:center;line-height:1.1;
+}
+.tl-point.active .tl-year{color:var(--red)}
+.tl-detail{
+  flex:1;background:rgba(255,255,255,0.5);
+  border:1px solid rgba(201,169,97,0.6);border-radius:10px;
+  padding:18px 22px;display:grid;grid-template-columns:160px 1fr;gap:20px;
+  min-height:140px;
+}
+.tl-detail-left{display:flex;flex-direction:column;justify-content:center;border-right:1px dashed rgba(201,169,97,0.6);padding-right:18px}
+.tl-detail-year{
+  font-family:var(--font-display);font-size:36px;font-weight:700;
+  color:var(--red);line-height:1;
+}
+.tl-detail-era{
+  font-size:12.5px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--civic);font-weight:600;margin-top:6px;
+}
+.tl-detail-tag{
+  display:inline-block;margin-top:8px;padding:3px 10px;
+  background:var(--civic);color:var(--cream);
+  border-radius:10px;font-size:12px;letter-spacing:0.08em;
+  text-transform:uppercase;font-weight:600;width:fit-content;
+}
+.tl-detail-title{
+  font-family:var(--font-display);font-size:18px;color:var(--ink);
+  font-weight:600;margin-bottom:6px;
+}
+.tl-detail-text{font-size:13px;line-height:1.55;color:var(--ink-soft)}
+.tl-influences{
+  margin-top:12px;padding:10px 16px;
+  background:var(--civic);color:var(--cream);border-radius:8px;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.tl-influences .ilabel{
+  font-size:12px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+}
+.tl-influences .ichip{
+  font-size:12.5px;padding:3px 9px;
+  background:rgba(201,169,97,0.5);border-radius:10px;
+  border:1px solid rgba(201,169,97,0.7);
+}
+
+/* ====================================================
+   SLIDE 5 — DIVISOR FUNCIONES
+   ==================================================== */
+#slide-5 .slide-inner{align-items:center;justify-content:center;text-align:center}
+.divisor-emblem{
+  width:90px;height:90px;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:center;
+  filter:drop-shadow(0 4px 12px rgba(30,58,95,0.3));
+}
+.divisor-emblem svg{width:100%;height:100%}
+.divisor-title{
+  font-family:var(--font-display);font-weight:700;
+  font-size:54px;color:var(--ink);line-height:1.05;
+  letter-spacing:-0.01em;
+}
+.divisor-title .accent{color:var(--gold);font-style:italic}
+.divisor-rule{width:80px;height:4px;background:var(--gold);margin:18px auto;border-radius:2px}
+.divisor-subtitle{
+  font-family:var(--font-display);font-style:italic;
+  font-size:18px;color:var(--ink-soft);max-width:760px;margin:0 auto 16px;
+  line-height:1.4;
+}
+.divisor-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;background:var(--civic);color:var(--cream);
+  border-radius:20px;font-size:12px;font-weight:600;
+  letter-spacing:0.08em;
+}
+.divisor-pill svg{width:14px;height:14px;color:var(--gold)}
+.divisor-grid{
+  margin-top:24px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;
+  max-width:900px;
+}
+.divisor-mini{
+  padding:12px 8px;background:rgba(255,255,255,0.5);
+  border:1px solid rgba(201,169,97,0.6);border-radius:8px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  text-align:center;
+}
+.divisor-mini svg{width:24px;height:24px;color:var(--civic)}
+.divisor-mini .dmn{font-family:var(--font-display);font-size:14px;color:var(--gold);font-weight:700}
+.divisor-mini .dml{font-size:12px;color:var(--ink-soft);line-height:1.2}
+
+/* ====================================================
+   SLIDE 6 — TABS FUNCIONES
+   ==================================================== */
+.tabs-wrap{flex:1;display:flex;flex-direction:column;margin-top:8px;min-height:0}
+.tabs-nav{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:6px;
+  margin-bottom:14px;
+}
+.tab-btn{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:12px 8px;background:rgba(255,255,255,0.4);
+  border:1px solid rgba(201,169,97,0.55);border-radius:8px;
+  cursor:pointer;transition:all .25s;text-align:center;
+}
+.tab-btn:hover{background:rgba(201,169,97,0.4);border-color:var(--gold)}
+.tab-btn.active{background:var(--civic);border-color:var(--civic);color:var(--cream)}
+.tab-btn svg{width:28px;height:28px;color:var(--civic);transition:color .25s}
+.tab-btn.active svg{color:var(--gold)}
+.tab-btn .tnum{
+  font-family:var(--font-display);font-size:12.5px;font-weight:700;
+  color:var(--civic);
+}
+.tab-btn.active .tnum{color:var(--gold)}
+.tab-btn .tlabel{font-size:12.5px;font-weight:600;line-height:1.2;color:var(--ink)}
+.tab-btn.active .tlabel{color:var(--cream)}
+.tab-content{
+  flex:1;background:rgba(255,255,255,0.55);
+  border:1px solid rgba(201,169,97,0.6);border-radius:12px;
+  padding:24px 28px;display:none;
+  position:relative;overflow:hidden;
+}
+.tab-content.active{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start}
+.tab-content::before{
+  content:"";position:absolute;top:0;left:0;width:6px;height:100%;
+  background:var(--gold);
+}
+.tab-icon-box{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:16px;background:linear-gradient(160deg, var(--civic), var(--civic-deep));
+  border-radius:10px;color:var(--cream);text-align:center;
+}
+.tab-icon-box svg{width:60px;height:60px;color:var(--gold)}
+.tab-icon-box .tname{
+  font-family:var(--font-display);font-size:14px;color:var(--cream);
+  font-weight:600;line-height:1.3;
+}
+.tab-text-block h3{
+  font-family:var(--font-display);font-size:22px;color:var(--ink);
+  margin-bottom:10px;font-weight:600;
+}
+.tab-text-block p{font-size:13px;line-height:1.6;color:var(--ink);margin-bottom:8px}
+.tab-fact{
+  margin-top:10px;padding:10px 14px;
+  background:rgba(201,169,97,0.4);border-left:3px solid var(--gold);
+  border-radius:0 6px 6px 0;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:8px;
+}
+.tab-fact .fact-row{font-size:13px;line-height:1.4}
+.tab-fact .fact-label{
+  font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--civic);font-weight:600;display:block;margin-bottom:2px;
+}
+.tab-fact .fact-val{color:var(--ink);font-weight:500}
+
+/* ====================================================
+   SLIDE 7 & 8 — ACIERTOS / DESACIERTOS
+   ==================================================== */
+.cards-grid-7{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+  margin-top:10px;flex:1;
+}
+.cards-grid-7 .card-item:nth-child(7){grid-column:span 2}
+.cards-grid-7 .card-item:nth-child(7).wide2{grid-column:span 2}
+.card-item{
+  position:relative;padding:14px;
+  background:rgba(255,255,255,0.55);
+  border:1px solid rgba(201,169,97,0.6);border-radius:10px;
+  cursor:pointer;transition:all .25s;
+  display:flex;flex-direction:column;gap:8px;
+  perspective:1000px;
+}
+.card-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft)}
+.aciertos .card-item{border-top:4px solid var(--green)}
+.desaciertos .card-item{border-top:4px solid var(--red)}
+.card-num-corner{
+  position:absolute;top:8px;right:10px;
+  font-family:var(--font-display);font-size:24px;font-weight:700;
+  color:rgba(201,169,97,0.65);line-height:1;
+}
+.card-icon{width:32px;height:32px;color:var(--civic)}
+.desaciertos .card-icon{color:var(--red)}
+.aciertos .card-icon{color:var(--green)}
+.card-title{
+  font-family:var(--font-display);font-size:14px;font-weight:600;
+  color:var(--ink);line-height:1.35;
+}
+.card-desc{
+  font-size:12.5px;line-height:1.45;color:var(--ink-soft);
+  flex:1;
+}
+.card-flip-hint{
+  font-size:12px;color:var(--civic);font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  display:flex;align-items:center;gap:4px;margin-top:auto;
+}
+.card-flip-hint svg{width:10px;height:10px}
+
+/* Modal flip overlay for grid cards */
+.card-back-content{
+  display:none;
+}
+.card-modal{
+  position:fixed;inset:0;background:rgba(42,24,16,0.75);
+  backdrop-filter:blur(4px);z-index:60;
+  display:none;align-items:center;justify-content:center;padding:40px;
+  opacity:0;transition:opacity .3s;
+}
+.card-modal.show{display:flex;opacity:1}
+.card-modal-inner{
+  background:var(--cream);border-radius:14px;padding:32px;
+  max-width:560px;width:100%;
+  box-shadow:0 30px 60px -10px rgba(0,0,0,0.5);
+  border:1px solid rgba(201,169,97,0.7);
+  position:relative;transform:scale(0.92);transition:transform .3s;
+}
+.card-modal.show .card-modal-inner{transform:scale(1)}
+.card-modal-close{
+  position:absolute;top:14px;right:14px;width:32px;height:32px;
+  border:none;background:rgba(30,58,95,0.1);border-radius:50%;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--ink);
+}
+.card-modal-close:hover{background:var(--red);color:var(--cream)}
+.card-modal-close svg{width:16px;height:16px}
+.card-modal-icon{width:48px;height:48px;margin-bottom:12px}
+.card-modal-title{
+  font-family:var(--font-display);font-size:24px;color:var(--ink);
+  margin-bottom:6px;font-weight:600;
+}
+.card-modal-tag{
+  display:inline-block;font-size:12px;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--civic);font-weight:600;
+  margin-bottom:14px;
+}
+.card-modal-text{
+  font-size:14px;line-height:1.65;color:var(--ink);margin-bottom:12px;
+}
+.card-modal-extra{
+  padding:12px 14px;background:rgba(30,58,95,0.06);
+  border-left:3px solid var(--gold);border-radius:0 6px 6px 0;
+  font-size:12.5px;line-height:1.55;color:var(--ink-soft);
+}
+
+/* ====================================================
+   SLIDE 9 & 10 — DESAFÍOS GRID 5
+   ==================================================== */
+.cards-grid-5{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:10px;
+  margin-top:10px;flex:1;
+}
+.card5{
+  padding:14px 12px;background:rgba(255,255,255,0.55);
+  border:1px solid rgba(201,169,97,0.6);border-radius:10px;
+  display:flex;flex-direction:column;gap:8px;
+  position:relative;
+}
+.card5 .c5-icon{
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  background:rgba(166,61,42,0.1);border-radius:8px;padding:6px;
+}
+.card5 .c5-icon svg{width:100%;height:100%;color:var(--red)}
+#slide-10 .card5 .c5-icon{background:rgba(30,58,95,0.1)}
+#slide-10 .card5 .c5-icon svg{color:var(--civic)}
+.card5 .c5-num{
+  position:absolute;top:10px;right:12px;
+  font-family:var(--font-display);font-size:20px;font-weight:700;
+  color:rgba(201,169,97,0.7);
+}
+.card5 .c5-title{
+  font-family:var(--font-display);font-size:14px;font-weight:600;
+  color:var(--ink);line-height:1.35;
+}
+.card5 .c5-desc{
+  font-size:12.5px;line-height:1.5;color:var(--ink-soft);
+}
+.card5 .c5-tag{
+  margin-top:auto;font-size:12px;letter-spacing:0.1em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--red);padding-top:6px;border-top:1px dashed rgba(166,61,42,0.25);
+}
+#slide-10 .card5 .c5-tag{color:var(--civic);border-top-color:rgba(30,58,95,0.25)}
+
+/* ====================================================
+   SLIDE 11 — TABLA COMPARATIVA
+   ==================================================== */
+.compare-table{
+  flex:1;margin-top:10px;
+  border:1px solid rgba(201,169,97,0.7);border-radius:10px;
+  overflow:hidden;background:rgba(255,255,255,0.45);
+  display:flex;flex-direction:column;
+}
+.compare-head{
+  display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr;
+  background:var(--civic);color:var(--cream);
+}
+.compare-head > div{
+  padding:12px 16px;font-family:var(--font-display);
+  font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;
+}
+.compare-head > div:not(:last-child){border-right:1px solid rgba(201,169,97,0.6)}
+.compare-head svg{width:16px;height:16px;color:var(--gold)}
+.compare-head .col3 svg{color:var(--red)}
+.compare-body{flex:1;display:flex;flex-direction:column}
+.compare-row{
+  display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr;
+  border-bottom:1px solid rgba(201,169,97,0.5);
+  transition:background .2s;
+}
+.compare-row:last-child{border-bottom:none}
+.compare-row:hover{background:rgba(201,169,97,0.36)}
+.compare-row > div{
+  padding:11px 16px;font-size:12.5px;line-height:1.45;
+}
+.compare-row > div:not(:last-child){border-right:1px dashed rgba(201,169,97,0.5)}
+.compare-row .col1{
+  font-family:var(--font-display);font-weight:600;color:var(--civic);
+  font-size:13px;
+}
+.compare-row .col2{color:var(--ink)}
+.compare-row .col3{color:var(--red);font-weight:500}
+.compare-row .col3::before{
+  content:"";display:inline-block;width:6px;height:6px;
+  background:var(--red);border-radius:50%;margin-right:8px;
+  vertical-align:middle;
+}
+
+/* ====================================================
+   SLIDE 12 — PROPUESTA CIUDADANA
+   ==================================================== */
+.propuesta-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;
+  margin-top:10px;flex:1;
+}
+.propuesta-card{
+  background:rgba(255,255,255,0.55);
+  border:1px solid rgba(201,169,97,0.6);border-radius:12px;
+  padding:18px 20px;position:relative;
+  display:flex;flex-direction:column;gap:8px;
+}
+.propuesta-card .pc-num{
+  position:absolute;top:-12px;left:18px;
+  width:30px;height:30px;border-radius:50%;
+  background:var(--gold);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;font-size:14px;
+  box-shadow:var(--shadow-soft);
+}
+.propuesta-card .pc-icon{
+  width:36px;height:36px;color:var(--civic);
+  margin-left:auto;margin-bottom:4px;
+}
+.propuesta-card .pc-title{
+  font-family:var(--font-display);font-size:16px;color:var(--ink);
+  font-weight:600;line-height:1.35;
+}
+.propuesta-card .pc-text{
+  font-size:12.5px;line-height:1.55;color:var(--ink-soft);
+}
+.propuesta-card .pc-text strong{color:var(--civic);font-weight:600}
+.propuesta-card .pc-list{
+  margin-top:4px;padding-left:0;list-style:none;
+  display:flex;flex-direction:column;gap:4px;
+}
+.propuesta-card .pc-list li{
+  font-size:13px;line-height:1.5;color:var(--ink-soft);
+  padding-left:18px;position:relative;
+}
+.propuesta-card .pc-list li::before{
+  content:"";position:absolute;left:0;top:7px;
+  width:6px;height:6px;border-radius:50%;background:var(--gold);
+}
+.propuesta-highlight{
+  margin-top:14px;padding:14px 22px;
+  background:linear-gradient(135deg, var(--civic), var(--civic-deep));
+  color:var(--cream);border-radius:12px;
+  display:flex;align-items:center;gap:14px;
+  border:1px solid var(--gold);
+}
+.propuesta-highlight svg{width:36px;height:36px;color:var(--gold);flex-shrink:0}
+.propuesta-highlight .ph-text{
+  font-family:var(--font-display);font-size:16px;font-style:italic;
+  line-height:1.4;
+}
+.propuesta-highlight .ph-text strong{color:var(--gold);font-weight:600;font-style:normal}
+
+/* ====================================================
+   SLIDE 13 — CIERRE CREATIVO
+   ==================================================== */
+#slide-13 .slide-inner{align-items:center;justify-content:center;text-align:center}
+.cierre-emblem{width:80px;height:80px;margin-bottom:12px}
+.cierre-emblem svg{width:100%;height:100%;color:var(--gold)}
+.cierre-sintesis{
+  font-family:var(--font-display);font-style:italic;font-weight:600;
+  font-size:36px;line-height:1.2;color:var(--ink);
+  max-width:840px;margin-bottom:14px;
+}
+.cierre-sintesis .accent{color:var(--gold)}
+.cierre-rule{width:60px;height:3px;background:var(--gold);margin:0 auto 18px;border-radius:2px}
+.cierre-reflexiones{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  max-width:920px;margin-bottom:18px;
+}
+.reflex-card{
+  padding:18px 16px;background:rgba(255,255,255,0.5);
+  border:1px solid rgba(201,169,97,0.6);border-radius:10px;
+  text-align:left;position:relative;
+}
+.reflex-card .rc-num{
+  font-family:var(--font-display);font-size:28px;font-weight:700;
+  color:var(--gold);line-height:1;margin-bottom:6px;
+}
+.reflex-card .rc-text{
+  font-size:12.5px;line-height:1.5;color:var(--ink);
+}
+.cierre-poem{
+  padding:14px 28px;background:var(--civic);color:var(--cream);
+  border-radius:24px;font-family:var(--font-display);font-style:italic;
+  font-size:15px;line-height:1.4;max-width:680px;
+  border:1px solid var(--gold);
+}
+
+/* ====================================================
+   SLIDE 14 — QUIZ
+   ==================================================== */
+.quiz-wrap{flex:1;display:flex;flex-direction:column;margin-top:10px;min-height:0}
+.quiz-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  flex:1;
+}
+.quiz-card{
+  background:rgba(255,255,255,0.55);
+  border:1px solid rgba(201,169,97,0.6);border-radius:10px;
+  padding:14px 16px;display:flex;flex-direction:column;gap:8px;
+  position:relative;
+}
+.quiz-card .qnum{
+  position:absolute;top:-10px;left:14px;
+  width:24px;height:24px;border-radius:50%;
+  background:var(--civic);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;font-size:12px;
+  border:2px solid var(--cream);
+}
+.quiz-question{
+  font-family:var(--font-display);font-size:14px;font-weight:600;
+  color:var(--ink);line-height:1.3;margin-top:4px;
+}
+.quiz-options{display:flex;flex-direction:column;gap:5px;flex:1}
+.quiz-option{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;background:rgba(245,239,224,0.9);
+  border:1px solid rgba(201,169,97,0.55);border-radius:6px;
+  cursor:pointer;transition:all .2s;font-size:12px;
+}
+.quiz-option:hover{background:rgba(201,169,97,0.44999999999999996);border-color:var(--gold)}
+.quiz-option .opt-letter{
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(30,58,95,0.15);color:var(--civic);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:12.5px;flex-shrink:0;
+}
+.quiz-option.correct{
+  background:rgba(63,107,69,0.18);border-color:var(--green);
+}
+.quiz-option.correct .opt-letter{background:var(--green);color:var(--cream)}
+.quiz-option.wrong{
+  background:rgba(166,61,42,0.15);border-color:var(--red);
+}
+.quiz-option.wrong .opt-letter{background:var(--red);color:var(--cream)}
+.quiz-option.disabled{pointer-events:none;opacity:0.7}
+.quiz-feedback{
+  display:none;padding:8px 12px;border-radius:6px;
+  font-size:13px;line-height:1.45;margin-top:auto;
+}
+.quiz-feedback.show{display:block;animation:fadeIn .3s}
+.quiz-feedback.ok{background:rgba(63,107,69,0.12);color:var(--green);border-left:3px solid var(--green)}
+.quiz-feedback.err{background:rgba(166,61,42,0.1);color:var(--red);border-left:3px solid var(--red)}
+.quiz-score{
+  margin-top:12px;padding:10px 18px;
+  background:var(--civic);color:var(--cream);
+  border-radius:10px;display:flex;align-items:center;justify-content:space-between;
+  font-size:13px;
+}
+.quiz-score .score-num{
+  font-family:var(--font-display);font-size:22px;color:var(--gold);font-weight:700;
+}
+.quiz-reset{
+  background:var(--gold);color:var(--ink);border:none;
+  padding:6px 14px;border-radius:14px;font-size:12.5px;
+  font-weight:600;cursor:pointer;letter-spacing:0.05em;
+  text-transform:uppercase;transition:all .2s;
+}
+.quiz-reset:hover{background:var(--cream);color:var(--civic)}
+
+/* ====================================================
+   SLIDE 15 — BIBLIOGRAFÍA
+   ==================================================== */
+.biblio-grid{
+  display:grid;grid-template-columns:1.4fr 1fr;gap:24px;
+  margin-top:10px;flex:1;
+}
+.biblio-list{
+  background:rgba(255,255,255,0.5);
+  border:1px solid rgba(201,169,97,0.6);border-radius:10px;
+  padding:18px 22px;overflow-y:auto;
+}
+.biblio-list::-webkit-scrollbar{width:5px}
+.biblio-list::-webkit-scrollbar-thumb{background:rgba(201,169,97,0.6)}
+.biblio-list h3{
+  font-family:var(--font-display);font-size:18px;color:var(--civic);
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid rgba(201,169,97,0.6);padding-bottom:8px;
+}
+.biblio-list h3 svg{width:18px;height:18px;color:var(--gold)}
+.biblio-entry{
+  font-size:12px;line-height:1.5;color:var(--ink);
+  padding:8px 0;border-bottom:1px dashed rgba(201,169,97,0.5);
+}
+.biblio-entry:last-child{border-bottom:none}
+.biblio-entry .be-author{font-weight:600;color:var(--civic)}
+.biblio-entry .be-year{font-style:italic;color:var(--ink-soft)}
+.biblio-entry .be-title{font-style:italic;color:var(--ink)}
+.biblio-entry .be-link{color:var(--civic);font-size:12.5px;word-break:break-all}
+.cierre-final{
+  background:linear-gradient(160deg, var(--civic) 0%, var(--civic-deep) 100%);
+  color:var(--cream);border-radius:14px;padding:24px;
+  display:flex;flex-direction:column;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+  border:1px solid var(--gold);
+}
+.cierre-final::before{
+  content:"";position:absolute;top:-40px;right:-40px;
+  width:160px;height:160px;border:2px solid rgba(201,169,97,0.44999999999999996);
+  border-radius:50%;
+}
+.cierre-final::after{
+  content:"";position:absolute;bottom:-60px;left:-30px;
+  width:140px;height:140px;border:2px solid rgba(201,169,97,0.4);
+  border-radius:50%;
+}
+.cierre-final .cf-icon{
+  width:54px;height:54px;margin:0 auto 12px;
+  position:relative;z-index:1;
+}
+.cierre-final .cf-title{
+  font-family:var(--font-display);font-size:22px;font-weight:700;
+  line-height:1.2;color:var(--cream);position:relative;z-index:1;
+  margin-bottom:10px;
+}
+.cierre-final .cf-title .accent{color:var(--gold);font-style:italic}
+.cierre-final .cf-rule{width:50px;height:2px;background:var(--gold);margin:8px auto;position:relative;z-index:1}
+.cierre-final .cf-credit{
+  font-size:12.5px;line-height:1.5;color:rgba(245,239,224,0.7);
+  position:relative;z-index:1;
+}
+.cierre-final .cf-credit strong{color:var(--gold);font-weight:600}
+
+/* ====== ANIMATIONS ====== */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.slide.active .slide-inner > *{animation:slideUp .5s ease both}
+.slide.active .slide-inner > *:nth-child(2){animation-delay:.1s}
+.slide.active .slide-inner > *:nth-child(3){animation-delay:.2s}
+.slide.active .slide-inner > *:nth-child(4){animation-delay:.3s}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width:1100px){
+  #sidebar{position:fixed;top:0;bottom:0;left:0;transform:translateX(-240px)}
+  #sidebar:not(.collapsed){transform:translateX(0)}
+  .cover-title{font-size:64px}
+  .flipcard-stage{grid-template-columns:1fr;min-height:auto}
+  .flipcard{min-height:340px}
+  .cards-grid-7{grid-template-columns:repeat(2,1fr)}
+  .cards-grid-7 .card-item:nth-child(7){grid-column:span 2}
+  .cards-grid-5{grid-template-columns:repeat(2,1fr)}
+  .cierre-reflexiones{grid-template-columns:1fr}
+  .quiz-grid{grid-template-columns:1fr}
+  .biblio-grid{grid-template-columns:1fr}
+  .intro-grid{grid-template-columns:1fr}
+  .propuesta-grid{grid-template-columns:1fr}
+  .compare-head, .compare-row{grid-template-columns:1fr}
+  .compare-row > div:not(:last-child){border-right:none;border-bottom:1px dashed rgba(201,169,97,0.5)}
+  .tabs-nav{grid-template-columns:repeat(2,1fr)}
+  .tab-content.active{grid-template-columns:1fr}
+  .divisor-grid{grid-template-columns:repeat(2,1fr)}
+  .tl-detail{grid-template-columns:1fr}
+  .tl-detail-left{border-right:none;border-bottom:1px dashed rgba(201,169,97,0.6);padding-bottom:10px;padding-right:0}
+}
+
+@media (max-height:700px){
+  .slide-inner{padding:36px 56px 48px}
+  .cover-title{font-size:64px}
+  .slide-title{font-size:30px}
+}
+
+/* Hide scrollbar but keep functional */
+.slide-inner{scrollbar-width:thin;scrollbar-color:rgba(42,24,16,0.15) transparent}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <!-- ============ SIDEBAR ============ -->
+  <aside id="sidebar">
+    <div class="brand">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Logos Academy Shield Logo -->
+        <!-- Shield outline -->
+        <path d="M30 20 L170 20 L170 110 Q170 170 100 190 Q30 170 30 110 Z" fill="#1A237B" stroke="#0a1142" stroke-width="3"/>
+        <!-- Maroon upper section (diagonal split) -->
+        <clipPath id="shieldClip"><path d="M30 20 L170 20 L170 110 Q170 170 100 190 Q30 170 30 110 Z"/></clipPath>
+        <rect x="20" y="15" width="170" height="100" fill="#8B1538" clip-path="url(#shieldClip)"/>
+        <!-- Diagonal dividing line -->
+        <line x1="170" y1="20" x2="30" y2="115" stroke="#0a1142" stroke-width="2"/>
+        <!-- Three white stars in maroon section -->
+        <g fill="#FFFFFF">
+          <polygon points="100,35 103,44 112,44 105,49 107,58 100,53 93,58 95,49 88,44 97,44"/>
+          <polygon points="70,55 73,64 82,64 75,69 77,78 70,73 63,78 65,69 58,64 67,64"/>
+          <polygon points="130,55 133,64 142,64 135,69 137,78 130,73 123,78 125,69 118,64 127,64"/>
+        </g>
+        <!-- Globe lines in navy section -->
+        <g stroke="#FFFFFF" stroke-width="1.8" fill="none" clip-path="url(#shieldClip)">
+          <ellipse cx="100" cy="138" rx="55" ry="35"/>
+          <ellipse cx="100" cy="138" rx="25" ry="35"/>
+          <line x1="45" y1="138" x2="155" y2="138"/>
+          <path d="M60 118 Q100 130 140 118"/>
+          <path d="M60 158 Q100 146 140 158"/>
+        </g>
+      </svg>
+      <div>
+        <div class="brand-text">Democracia</div>
+        <div class="brand-sub">Ayer y Hoy</div>
+      </div>
+    </div>
+    <nav class="toc" id="toc">
+      <!-- TOC populated by JS -->
+    </nav>
+    <div class="sidebar-foot">
+      Colegio Logos Academy<br>
+      Individuos y Sociedades<br>
+      Educación para la Ciudadanía
+    </div>
+  </aside>
+
+  <!-- ============ STAGE ============ -->
+  <main id="stage" class="texture-marble">
+    <div id="slides-container">
+
+      <!-- ============ SLIDE 1 — PORTADA ============ -->
+      <section class="slide" id="slide-1" data-index="0">
+        <div class="cover-bg" data-decor aria-hidden="true">
+          <svg class="bg-art" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <pattern id="grid1" width="80" height="80" patternUnits="userSpaceOnUse">
+                <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#2A1810" stroke-width="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid1)"/>
+            <!-- Greek columns left -->
+            <g transform="translate(80,140)" opacity="0.7">
+              <rect x="0" y="0" width="20" height="440" fill="#2A1810"/>
+              <rect x="40" y="0" width="20" height="440" fill="#2A1810"/>
+              <rect x="80" y="0" width="20" height="440" fill="#2A1810"/>
+              <rect x="-20" y="-20" width="140" height="14" fill="#2A1810"/>
+              <rect x="-20" y="440" width="140" height="14" fill="#2A1810"/>
+            </g>
+            <!-- Roman eagle right -->
+            <g transform="translate(1080,260)" opacity="0.5" stroke="#2A1810" stroke-width="2" fill="none">
+              <path d="M60 0 L60 200 M60 40 Q20 60 10 100 M60 40 Q100 60 110 100 M60 80 Q30 90 25 130 M60 80 Q90 90 95 130 M60 120 Q35 130 35 160 M60 120 Q85 130 85 160"/>
+              <circle cx="60" cy="-10" r="12" fill="#2A1810"/>
+            </g>
+          </svg>
+        </div>
+        <div class="slide-inner">
+          <div class="cover-content">
+            <div class="cover-emblem">
+              <!-- Logos Academy Institutional Logo -->
+              <svg viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Shield -->
+                <path d="M20 10 L120 10 L120 75 Q120 120 70 135 Q20 120 20 75 Z" fill="#1A237B" stroke="#0a1142" stroke-width="2.5"/>
+                <clipPath id="shieldCover"><path d="M20 10 L120 10 L120 75 Q120 120 70 135 Q20 120 20 75 Z"/></clipPath>
+                <rect x="15" y="8" width="115" height="68" fill="#8B1538" clip-path="url(#shieldCover)"/>
+                <line x1="120" y1="10" x2="20" y2="78" stroke="#0a1142" stroke-width="1.5"/>
+                <!-- Stars -->
+                <g fill="#FFFFFF">
+                  <polygon points="70,22 72,28 78,28 73,32 75,38 70,34 65,38 67,32 62,28 68,28"/>
+                  <polygon points="48,36 50,42 56,42 51,46 53,52 48,48 43,52 45,46 40,42 46,42"/>
+                  <polygon points="92,36 94,42 100,42 95,46 97,52 92,48 87,52 89,46 84,42 90,42"/>
+                </g>
+                <!-- Globe -->
+                <g stroke="#FFFFFF" stroke-width="1.5" fill="none" clip-path="url(#shieldCover)">
+                  <ellipse cx="70" cy="95" rx="38" ry="25"/>
+                  <ellipse cx="70" cy="95" rx="17" ry="25"/>
+                  <line x1="32" y1="95" x2="108" y2="95"/>
+                  <path d="M42,82 Q70,90 98,82"/>
+                  <path d="M42,108 Q70,100 98,108"/>
+                </g>
+                <!-- Text: LOGOS -->
+                <text x="140" y="68" fill="#1A237B" font-family="Playfair Display, Georgia, serif" font-size="52" font-weight="700" letter-spacing="6">LOGOS</text>
+                <!-- Text: ACADEMY -->
+                <text x="144" y="100" fill="#1A237B" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="400" letter-spacing="12">ACADEMY</text>
+              </svg>
+            </div>
+            <div class="cover-eyebrow">Colegio Logos Academy · ADA de Historia</div>
+            <h1 class="cover-title">Democracia:<br><span class="amp">Ayer</span> &amp; <span class="amp">Hoy</span></h1>
+            <div class="cover-rule"></div>
+            <p class="cover-subtitle">¿Qué de la democracia que inventaron Grecia y Roma sigue vivo —y qué está en riesgo— en la democracia ecuatoriana de hoy?</p>
+            <div class="cover-foot">
+              Individuos y Sociedades <span class="dot">·</span> Educación para la Ciudadanía <span class="dot">·</span> BGU
+            </div>
+            <button class="start-btn" id="startBtn">
+              Comenzar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 2 — INTRODUCCIÓN ============ -->
+      <section class="slide" id="slide-2" data-index="1">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Introducción</div>
+          <h2 class="slide-title" style="font-size:34px">Propósito de la ADA</h2>
+          <div class="divider-gold"></div>
+          <div class="intro-grid">
+            <div class="intro-left">
+              <div class="question-box">
+                <div class="qlabel">Pregunta detonante</div>
+                <p class="qtext">¿Qué de la democracia que inventaron Grecia y Roma sigue vivo —y qué está en riesgo— en la democracia ecuatoriana de hoy?</p>
+              </div>
+              <p>En esta ADA investigarás cómo nacieron la democracia y la ciudadanía en Grecia y Roma, y cómo esas ideas llegaron, se transformaron y se pusieron a prueba en el Ecuador. Recorrerás más de 2.500 años de historia política: desde el ágora ateniense y el Senado romano hasta la Constitución de Montecristi de 2008 y los desafíos democráticos que vive el país hoy.</p>
+              <p>El propósito no es solo memorizar fechas, sino comprender de dónde vienen las ideas que organizan nuestra convivencia —ley, república, sufragio, separación de poderes, ciudadanía— y asumir una postura crítica frente a los problemas actuales. Cada estudiante deberá rastrear herencias, analizar aciertos y desaciertos, y construir una propuesta ciudadana concreta.</p>
+
+              <h3 class="challenges-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                Tres desafíos del trabajo histórico y ciudadano
+              </h3>
+              <ul class="challenge-list">
+                <li class="challenge-item"><span class="challenge-num">1</span><div><strong>Rastrear</strong> qué elementos de la democracia griega y romana perviven en el sistema político ecuatoriano.</div></li>
+                <li class="challenge-item"><span class="challenge-num">2</span><div><strong>Analizar</strong> los aciertos, desaciertos y desafíos actuales de la democracia en el Ecuador.</div></li>
+                <li class="challenge-item"><span class="challenge-num">3</span><div><strong>Construir</strong> una propuesta ciudadana viable para fortalecer la democracia en tu entorno.</div></li>
+              </ul>
+            </div>
+            <div class="intro-right">
+              <div class="eval-block">
+                <div class="eval-label">Evaluación</div>
+                <h3 class="eval-title">¿Cómo se evaluará tu trabajo?</h3>
+                <div class="eval-row">
+                  <div>
+                    <div>Coevaluación entre estudiantes</div>
+                    <div class="eval-bar"><div style="width:40%"></div></div>
+                  </div>
+                  <div class="pct">40%</div>
+                </div>
+                <div class="eval-row">
+                  <div>
+                    <div>Nota grupal del lapbook (docente)</div>
+                    <div class="eval-bar"><div style="width:60%"></div></div>
+                  </div>
+                  <div class="pct">60%</div>
+                </div>
+              </div>
+              <div style="margin-top:auto;position:relative;z-index:1;padding-top:14px;border-top:1px solid rgba(201,169,97,0.55);">
+                <div style="font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;">Producto final</div>
+                <div style="font-family:var(--font-display);font-size:14px;line-height:1.4;color:var(--cream);font-style:italic;">Lapbook ciudadano: "Democracia Ayer y Hoy" — síntesis visual de la herencia clásica y la realidad ecuatoriana.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">Bienvenidos a la ADA "Democracia: Ayer y Hoy". Nuestra pregunta detonante es: ¿qué de la democracia que inventaron Grecia y Roma sigue vivo, y qué está en riesgo, en la democracia ecuatoriana de hoy? A lo largo de esta presentación recorreremos más de dos mil quinientos años de historia política, desde el ágora ateniense hasta la Constitución de Montecristi del 2008. Tres desafíos guían nuestro trabajo: rastrear las herencias grecorromanas en nuestro sistema, analizar aciertos y desaciertos actuales, y construir una propuesta ciudadana viable. La evaluación combina coevaluación entre estudiantes, equivalente al cuarenta por ciento, y la nota grupal del lapbook que evalúa el docente, equivalente al sesenta por ciento. Tomemos apuntes y participemos activamente.</aside>
+      </section>
+
+      <!-- ============ SLIDE 3 — GRECIA Y ROMA FLIPCARDS ============ -->
+      <section class="slide" id="slide-3" data-index="2">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Orígenes · Siglo VI a.C. — I d.C.</div>
+          <h2 class="slide-title" style="font-size:32px">Grecia y Roma: cuna del pensamiento político</h2>
+          <div class="divider-gold"></div>
+          <div class="flipcard-stage">
+            <!-- GRECIA -->
+            <div class="flipcard grecia" data-flip>
+              <div class="flipcard-inner">
+                <div class="flipcard-face flipcard-front">
+                  <div class="flipcard-icon">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="#C9A961" stroke-width="2" stroke-linecap="round">
+                      <rect x="10" y="10" width="80" height="10" fill="#C9A961"/>
+                      <rect x="14" y="20" width="72" height="6" fill="#C9A961" opacity="0.7"/>
+                      <rect x="18" y="26" width="6" height="56" fill="#1E3A5F"/>
+                      <rect x="32" y="26" width="6" height="56" fill="#1E3A5F"/>
+                      <rect x="46" y="26" width="6" height="56" fill="#1E3A5F"/>
+                      <rect x="60" y="26" width="6" height="56" fill="#1E3A5F"/>
+                      <rect x="74" y="26" width="6" height="56" fill="#1E3A5F"/>
+                      <rect x="6" y="82" width="88" height="10" fill="#C9A961"/>
+                    </svg>
+                  </div>
+                  <h3 class="flipcard-title">Grecia</h3>
+                  <div class="flipcard-tag">Atenas · Siglo VI a.C.</div>
+                  <p style="font-size:13px;line-height:1.5;color:var(--ink-soft);margin-top:10px;text-align:center;max-width:280px">Cuna de la <em>demokratía</em>: el poder del pueblo ejercido directamente en el ágora y la ekklesía.</p>
+                  <div class="flipcard-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5"/></svg>
+                    Haz clic para girar
+                  </div>
+                </div>
+                <div class="flipcard-face flipcard-back">
+                  <h4 class="bc-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+                    Instituciones atenienses
+                  </h4>
+                  <dl>
+                    <dt>Ágora</dt>
+                    <dd>Plaza pública donde los ciudadanos se reunían para debatir asuntos comunes; espacio físico y simbólico de la vida cívica, corazón comercial, religioso y político de la polis.</dd>
+                    <dt>Ekklesía</dt>
+                    <dd>Asamblea popular soberana con poder legislativo; votaba leyes, declaraba guerras, firmaba tratados y elegía magistrados. Se reunía unas cuarenta veces al año en la colina del Pnix.</dd>
+                    <dt>Ciudadanía restringida</dt>
+                    <dd>Solo varones libres, mayores de 20 años, hijos de padre y madre atenienses. Quedaban excluidos mujeres, metecos (extranjeros residentes) y esclavos: apenas un diez por ciento de la población.</dd>
+                    <dt>Democracia directa</dt>
+                    <dd>Los ciudadanos participaban personalmente en las decisiones, sin representantes intermedios. El sorteo y la rotación de cargos impedían la concentración permanente del poder.</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <!-- ROMA -->
+            <div class="flipcard roma" data-flip>
+              <div class="flipcard-inner">
+                <div class="flipcard-face flipcard-front">
+                  <div class="flipcard-icon">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="#A63D2A" stroke-width="2" stroke-linecap="round">
+                      <!-- Eagle -->
+                      <circle cx="50" cy="20" r="6" fill="#A63D2A"/>
+                      <path d="M50 26 L50 70" stroke="#A63D2A" stroke-width="3"/>
+                      <path d="M50 30 Q25 35 18 55 Q28 50 38 45" fill="#A63D2A" fill-opacity="0.2"/>
+                      <path d="M50 30 Q75 35 82 55 Q72 50 62 45" fill="#A63D2A" fill-opacity="0.2"/>
+                      <path d="M50 45 Q30 50 25 70 Q35 65 45 60" fill="#A63D2A" fill-opacity="0.2"/>
+                      <path d="M50 45 Q70 50 75 70 Q65 65 55 60" fill="#A63D2A" fill-opacity="0.2"/>
+                      <!-- SPQR banner -->
+                      <rect x="25" y="75" width="50" height="14" fill="#1E3A5F"/>
+                      <text x="50" y="85" text-anchor="middle" fill="#C9A961" font-family="Playfair Display" font-size="10" font-weight="700">SPQR</text>
+                    </svg>
+                  </div>
+                  <h3 class="flipcard-title">Roma</h3>
+                  <div class="flipcard-tag">República · 509 a.C. — 212 d.C.</div>
+                  <p style="font-size:13px;line-height:1.5;color:var(--ink-soft);margin-top:10px;text-align:center;max-width:280px">Inventora de la <em>res publica</em> y del Senado: gobierno mixto que equilibraba cónsules, patricios y asambleas.</p>
+                  <div class="flipcard-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5"/></svg>
+                    Haz clic para girar
+                  </div>
+                </div>
+                <div class="flipcard-face flipcard-back">
+                  <h4 class="bc-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/></svg>
+                    Instituciones romanas
+                  </h4>
+                  <dl>
+                    <dt>Senado</dt>
+                    <dd>Cuerpo de patricios y exmagistrados con poder consultivo, legislativo y de política exterior; símbolo de continuidad institucional durante más de mil años.</dd>
+                    <dt>Cónsules</dt>
+                    <dd>Dos magistrados supremos elegidos anualmente que ejercían el poder ejecutivo y comandaban los ejércitos. Su paridad y corta duración limitaban ambiciones personales.</dd>
+                    <dt>República (res publica)</dt>
+                    <dd>Forma de gobierno mixta que combina elementos monárquicos (cónsules), aristocráticos (Senado) y democráticos (asambleas). Modelo teorizado por Polibio y Cicerón.</dd>
+                    <dt>Ciudadanía ampliada</dt>
+                    <dd>Progresivamente extendida a los pueblos conquistados mediante la <em>civitas</em>; en el 212 d.C. Caracalla la concedió a todos los hombres libres del Imperio mediante la Constitutio Antoniniana.</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="concepts-strip">
+            <span class="clabel">Conceptos clave comunes</span>
+            <span class="concept-chip">Ley</span>
+            <span class="concept-chip">Sufragio</span>
+            <span class="concept-chip">Participación</span>
+            <span class="concept-chip">Deber cívico</span>
+            <span class="concept-chip">Representación</span>
+            <span class="concept-chip">Estado de Derecho</span>
+            <span class="concept-chip">Democracia</span>
+          </div>
+        </div>
+        <aside data-notes style="display:none">En esta diapositiva presentamos las dos grandes cunas del pensamiento político occidental: Grecia y Roma. En Grecia, concretamente en Atenas del siglo sexto antes de Cristo, nace la demokratía o poder del pueblo, ejercida de forma directa en el ágora y en la ekklesía. Sin embargo, la ciudadanía era muy restringida: solo varones libres, mayores de veinte años, hijos de padre y madre atenienses; quedaban excluidas las mujeres, los metecos y los esclavos. En Roma, por su parte, surge la república, la res publica o cosa pública, un gobierno mixto con Senado, cónsules y asambleas. Roma innovó al ampliar progresivamente la ciudadanía hasta llegar, en el año doscientos doce después de Cristo, a todos los hombres libres del Imperio. Estos conceptos —ley, sufragio, participación y deber cívico— siguen vivos hoy.</aside>
+      </section>
+
+      <!-- ============ SLIDE 4 — TIMELINE ============ -->
+      <section class="slide" id="slide-4" data-index="3">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Cronología · 2.500 años de democracia</div>
+          <h2 class="slide-title" style="font-size:32px">Línea de tiempo: de Grecia a Ecuador 2025</h2>
+          <div class="divider-gold"></div>
+          <div class="timeline-wrap">
+            <div class="timeline-track">
+              <div class="timeline-line"></div>
+              <div class="timeline-points" id="timelinePoints">
+                <!-- populated by JS -->
+              </div>
+            </div>
+            <div class="tl-detail" id="tlDetail">
+              <div class="tl-detail-left">
+                <div class="tl-detail-year" id="tlYear">508 a.C.</div>
+                <div class="tl-detail-era" id="tlEra">Atenas · Antigüedad</div>
+                <span class="tl-detail-tag" id="tlTag">Democracia directa</span>
+              </div>
+              <div class="tl-detail-right">
+                <h3 class="tl-detail-title" id="tlTitle">Reformas de Clístenes en Atenas</h3>
+                <p class="tl-detail-text" id="tlText">Clístenes instaura la democracia directa al reorganizar a los ciudadanos en diez tribus territoriales, rompiendo el poder de los clanes aristocráticos y abriendo la participación política a la Ekklesía.</p>
+              </div>
+            </div>
+            <div class="tl-influences">
+              <span class="ilabel">Influencias visibles grecorromanas hoy</span>
+              <span class="ichip">División de poderes</span>
+              <span class="ichip">Representación</span>
+              <span class="ichip">República</span>
+              <span class="ichip">Sufragio</span>
+              <span class="ichip">Leyes escritas</span>
+              <span class="ichip">Estado de Derecho</span>
+              <span class="ichip">Participación ciudadana</span>
+            </div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">Esta línea de tiempo recorre más de dos mil quinientos años de historia democrática. Comienza en el quinientos ocho antes de Cristo con las reformas de Clístenes en Atenas, que instauraron la democracia directa. En el quinientos nueve antes de Cristo se funda la República romana, y en el cuatrocientos cincuenta antes de Cristo aparece la Ley de las XII Tablas, primer cuerpo escrito del derecho romano. En el año doscientos doce después de Cristo, Caracalla concede la ciudadanía a todos los hombres libres del Imperio. Más adelante, la Carta Magna inglesa de mil doscientos quince, la Constitución estadounidense de mil setecientos ochenta y siete y la Declaración francesa de mil setecientos ochenta y nueve sientan bases del constitucionalismo moderno. En Ecuador destacan mil ochocientos treinta, mil novecientos setenta y ocho, mil novecientos noventa y ocho, dos mil ocho y dos mil veinticinco.</aside>
+      </section>
+
+      <!-- ============ SLIDE 5 — DIVISOR ============ -->
+      <section class="slide" id="slide-5" data-index="4">
+        <div class="slide-inner">
+          <div class="divisor-emblem">
+            <svg viewBox="0 0 100 100" fill="none">
+              <!-- 5 columns / 5 functions emblem -->
+              <rect x="8" y="18" width="84" height="6" fill="#C9A961"/>
+              <rect x="12" y="24" width="76" height="4" fill="#C9A961" opacity="0.6"/>
+              <g fill="#1E3A5F">
+                <rect x="14" y="28" width="8" height="48"/>
+                <rect x="30" y="28" width="8" height="48"/>
+                <rect x="46" y="28" width="8" height="48"/>
+                <rect x="62" y="28" width="8" height="48"/>
+                <rect x="78" y="28" width="8" height="48"/>
+              </g>
+              <rect x="6" y="76" width="88" height="8" fill="#C9A961"/>
+              <text x="50" y="56" text-anchor="middle" fill="#C9A961" font-family="Playfair Display" font-size="20" font-weight="700">5</text>
+            </svg>
+          </div>
+          <div class="slide-eyebrow" style="margin-bottom:8px">Constitución de la República del Ecuador · 2008</div>
+          <h2 class="divisor-title">5 Funciones del Estado Ecuatoriano<br><span class="accent">— herencia clásica, realidad constitucional —</span></h2>
+          <div class="divisor-rule"></div>
+          <p class="divisor-subtitle">Herederas de la separación de poderes de Montesquieu, ampliada con dos funciones propias: la Electoral y la de Transparencia y Control Social, que reconocen el papel activo del ciudadano.</p>
+          <div class="divisor-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z M4 4l4 4M8 8v12M16 8l4-4M16 8v12"/></svg>
+            Art. 225 · Constitución del Ecuador
+          </div>
+          <div class="divisor-grid">
+            <div class="divisor-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg><div class="dmn">01</div><div class="dml">Ejecutiva</div></div>
+            <div class="divisor-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v16M20 4v16M4 4h16M4 12h16M4 20h16M10 4v16"/></svg><div class="dmn">02</div><div class="dml">Legislativa</div></div>
+            <div class="divisor-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8h14M8 8L4 14M16 8l4 6M4 14h16"/></svg><div class="dmn">03</div><div class="dml">Judicial</div></div>
+            <div class="divisor-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 6V4h6v2M9 14l2 2 4-4"/></svg><div class="dmn">04</div><div class="dml">Electoral</div></div>
+            <div class="divisor-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M8 11h6"/></svg><div class="dmn">05</div><div class="dml">Transparencia</div></div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">Llegamos a una sección central de nuestra ADA: las cinco Funciones del Estado ecuatoriano, establecidas en el artículo doscientos veinticinco de la Constitución de dos mil ocho. Esta estructura es heredera directa de la separación de poderes teorizada por Montesquieu en el siglo dieciocho, que originalmente proponía tres poderes: ejecutivo, legislativo y judicial. Nuestra Constitución amplía esta herencia clásica con dos funciones propias: la Electoral, que organiza los procesos electorales, y la de Transparencia y Control Social, que promueve la participación ciudadana y combate la corrupción. Esta ampliación reconoce que la democracia moderna no se agota en representar al pueblo, sino que requiere controlar al poder y garantizar el ejercicio de los derechos políticos. A continuación veremos cada función en detalle.</aside>
+      </section>
+
+      <!-- ============ SLIDE 6 — TABS FUNCIONES ============ -->
+      <section class="slide" id="slide-6" data-index="5">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Detalle · Art. 225 Constitución 2008</div>
+          <h2 class="slide-title" style="font-size:32px">Las 5 Funciones del Estado en detalle</h2>
+          <div class="divider-gold"></div>
+          <div class="tabs-wrap">
+            <div class="tabs-nav" id="tabsNav">
+              <button class="tab-btn active" data-tab="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg>
+                <div class="tnum">01</div>
+                <div class="tlabel">Ejecutiva</div>
+              </button>
+              <button class="tab-btn" data-tab="1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v16M20 4v16M4 4h16M4 12h16M4 20h16M10 4v16M14 4v16"/></svg>
+                <div class="tnum">02</div>
+                <div class="tlabel">Legislativa</div>
+              </button>
+              <button class="tab-btn" data-tab="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8h14M8 8L4 14M16 8l4 6M4 14h16M6 21h4M14 21h4"/></svg>
+                <div class="tnum">03</div>
+                <div class="tlabel">Judicial</div>
+              </button>
+              <button class="tab-btn" data-tab="3">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 6V4h6v2M9 14l2 2 4-4"/></svg>
+                <div class="tnum">04</div>
+                <div class="tlabel">Electoral</div>
+              </button>
+              <button class="tab-btn" data-tab="4">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M8 11h6M11 8v6"/></svg>
+                <div class="tnum">05</div>
+                <div class="tlabel">Transparencia</div>
+              </button>
+            </div>
+
+            <div class="tab-content active" data-content="0">
+              <div class="tab-icon-box">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 58h52M10 58V20l22-12 22 12v38M16 58V32M48 58V32M22 58V42h20v16M28 38h8M28 30h8"/></svg>
+                <div class="tname">Función Ejecutiva</div>
+              </div>
+              <div class="tab-text-block">
+                <h3>Función Ejecutiva</h3>
+                <p>Dirige la administración pública, ejecuta políticas públicas, representa al Estado nacional e internacionalmente y vela por la seguridad y el cumplimiento de la Constitución. Es el motor operativo del régimen de gobierno.</p>
+                <p>Comprende a la Presidencia y Vicepresidencia de la República, los ministerios y demás organismos públicos que dependen del Ejecutivo. Su máximo responsable define las grandes orientaciones del Estado y responde políticamente ante la Asamblea Nacional.</p>
+                <div class="tab-fact">
+                  <div class="fact-row"><span class="fact-label">Máximo responsable</span><span class="fact-val">Presidente/a de la República</span></div>
+                  <div class="fact-row"><span class="fact-label">Sede principal</span><span class="fact-val">Palacio de Carondelet (Quito)</span></div>
+                  <div class="fact-row"><span class="fact-label">Periodo</span><span class="fact-val">4 años, reelección una vez</span></div>
+                  <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Cónsules romanos (poder ejecutivo colegiado)</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" data-content="1">
+              <div class="tab-icon-box">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8v48M56 8v48M8 8h48M8 32h48M8 56h48M22 8v48M42 8v48M8 20h48"/></svg>
+                <div class="tname">Función Legislativa</div>
+              </div>
+              <div class="tab-text-block">
+                <h3>Función Legislativa</h3>
+                <p>Aprueba, modifica o deroga leyes; fiscaliza a la Función Ejecutiva; tramita el presupuesto del Estado; y puede enjuiciar políticamente al Presidente y a otros altos funcionarios. Concreta la voluntad popular en normas jurídicas.</p>
+                <p>Su órgano principal es la Asamblea Nacional, organismo unicameral elegido por sufragio universal. Las comisiones especializadas analizan proyectos antes de su debate en pleno. La función legislativa prolonga la idea romana del Senado como cuerpo deliberante de la república.</p>
+                <div class="tab-fact">
+                  <div class="fact-row"><span class="fact-label">Órgano</span><span class="fact-val">Asamblea Nacional</span></div>
+                  <div class="fact-row"><span class="fact-label">Integración</span><span class="fact-val">137 asambleístas</span></div>
+                  <div class="fact-row"><span class="fact-label">Sede</span><span class="fact-val">Quito (Legislativo)</span></div>
+                  <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Senado romano + Ekklesía ateniense</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" data-content="2">
+              <div class="tab-icon-box">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 6v48M14 18h36M20 18l-10 18M44 18l10 18M10 36h44M16 56h10M38 56h10"/></svg>
+                <div class="tname">Función Judicial</div>
+              </div>
+              <div class="tab-text-block">
+                <h3>Función Judicial</h3>
+                <p>Administra justicia, resuelve conflictos, garantiza el cumplimiento de los derechos y aplica la ley en casos concretos. Es el guardián del Estado de Derecho: sin justicia independiente, no hay democracia real.</p>
+                <p>La integran la Corte Nacional de Justicia, las cortes provinciales, los tribunales y juzgados. Los jueces deben resolver con imparcialidad y autonomía, sin injerencias políticas o económicas. La balanza simboliza el equilibrio que debe caracterizar toda decisión judicial.</p>
+                <div class="tab-fact">
+                  <div class="fact-row"><span class="fact-label">Órganos</span><span class="fact-val">Corte Nacional, cortes provinciales, juzgados</span></div>
+                  <div class="fact-row"><span class="fact-label">Independencia</span><span class="fact-val">Garantizada por la Constitución</span></div>
+                  <div class="fact-row"><span class="fact-label">Principio</span><span class="fact-val">Imparcialidad y debido proceso</span></div>
+                  <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Pretor romano + Ley de las XII Tablas</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" data-content="3">
+              <div class="tab-icon-box">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="10" y="14" width="44" height="38" rx="3"/><path d="M22 14V8h20v6M22 30l5 5 12-12"/></svg>
+                <div class="tname">Función Electoral</div>
+              </div>
+              <div class="tab-text-block">
+                <h3>Función Electoral</h3>
+                <p>Garantiza el ejercicio de los derechos políticos, organiza y vigila los procesos electorales, y vela por la transparencia del sufragio. Es la función que materializa el principio democrático de "un ciudadano, un voto".</p>
+                <p>Esta función es propia del modelo ecuatoriano y reconoce que la calidad de la democracia depende directamente de la limpieza de los comicios. Sus dos órganos se complementan: el CNE organiza y el TCE resuelve controversias.</p>
+                <div class="tab-fact">
+                  <div class="fact-row"><span class="fact-label">Organización</span><span class="fact-val">Consejo Nacional Electoral (CNE)</span></div>
+                  <div class="fact-row"><span class="fact-label">Justicia electoral</span><span class="fact-val">Tribunal Contencioso Electoral (TCE)</span></div>
+                  <div class="fact-row"><span class="fact-label">Voto</span><span class="fact-val">Obligatorio entre 18 y 64 años</span></div>
+                  <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Sufragio de la Ekklesía + comicios romanos</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" data-content="4">
+              <div class="tab-icon-box">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="26" cy="26" r="14"/><path d="M36 36l16 16M20 26h12M26 20v12"/></svg>
+                <div class="tname">Transparencia y Control Social</div>
+              </div>
+              <div class="tab-text-block">
+                <h3>Función de Transparencia y Control Social</h3>
+                <p>Promueve e incentiva el control ciudadano de lo público, previene y combate la corrupción, designa a las autoridades de control y vela por la ética en la gestión del Estado. Es la función más innovadora de la Constitución de 2008.</p>
+                <p>Reconoce que la democracia no se agota en votar cada cuatro años: exige vigilancia permanente del ciudadano sobre quienes ejercen el poder. Por eso articula varios órganos de control bajo un principio común: rendición de cuentas.</p>
+                <div class="tab-fact">
+                  <div class="fact-row"><span class="fact-label">Órgano rector</span><span class="fact-val">CPCCS</span></div>
+                  <div class="fact-row"><span class="fact-label">Otros órganos</span><span class="fact-val">Defensoría del Pueblo, Contraloría, Superintendencias</span></div>
+                  <div class="fact-row"><span class="fact-label">Principio rector</span><span class="fact-val">Rendición de cuentas y control ciudadano</span></div>
+                  <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Tribuno de la plebe romano</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">En esta diapositiva examinamos las cinco funciones del Estado en detalle, navegando entre las pestañas. La Función Ejecutiva, encabezada por el Presidente de la República en el Palacio de Carondelet, dirige la administración pública. La Función Legislativa, ejercida por la Asamblea Nacional con ciento treinta y siete asambleístas, aprueba leyes y fiscaliza al Ejecutivo. La Función Judicial, con la Corte Nacional de Justicia a la cabeza, administra justicia con independencia. La Función Electoral, organizada por el Consejo Nacional Electoral y el Tribunal Contencioso Electoral, garantiza los derechos políticos. La Función de Transparencia y Control Social, liderada por el CPCCS e integrada además por la Defensoría del Pueblo, la Contraloría y las Superintendencias, promueve el control ciudadano y combate la corrupción. Observen cómo cada una prolonga herencias grecorromanas.</aside>
+      </section>
+
+      <!-- ============ SLIDE 7 — ACIERTOS ============ -->
+      <section class="slide aciertos" id="slide-7" data-index="6">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Balance democrático · Las luces</div>
+          <h2 class="slide-title" style="font-size:32px">Aciertos históricos — Las luces de la democracia</h2>
+          <div class="divider-gold"></div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-soft);margin-bottom:6px;max-width:900px">Pese a los desafíos, la democracia ecuatoriana ha consolidado logros reales que conviene reconocer y defender. Estos aciertos son herencia directa de los principios grecorromanos y de las luchas ciudadanas del siglo XX.</p>
+          <div class="cards-grid-7" id="aciertosGrid">
+            <!-- populated by JS, with data-flip cards -->
+          </div>
+        </div>
+        <aside data-notes style="display:none">Esta diapositiva celebra los aciertos históricos de nuestra democracia. Entre ellos destacan: el voto universal, conquistado en Ecuador con el voto femenino desde mil novecientos veintinueve; la libertad de expresión y prensa independiente como garantía constitucional; la participación ciudadana en decisiones locales mediante presupuestos participativos, audiencias públicas y sillas vacías; la alternancia pacífica en el poder tras cada proceso electoral; la protección de más de noventa derechos reconocidos en la Constitución de dos mil ocho; la educación cívica como eje transversal en los centros educativos; y las leyes que promueven la igualdad, como las cuotas de género y los programas de inclusión. Cada acierto es herencia directa de los principios grecorromanos y de las luchas ciudadanas del siglo veinte. Pidan a los estudiantes que hagan clic en cada tarjeta para ampliar la información.</aside>
+      </section>
+
+      <!-- ============ SLIDE 8 — DESACIERTOS ============ -->
+      <section class="slide desaciertos" id="slide-8" data-index="7">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Balance democrático · Las sombras</div>
+          <h2 class="slide-title" style="font-size:32px">Desaciertos históricos — Las sombras de la democracia</h2>
+          <div class="divider-gold"></div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-soft);margin-bottom:6px;max-width:900px">La democracia también acumula heridas que debemos mirar con honestidad. Reconocer los desaciertos es el primer paso para corregirlos y fortalecer las instituciones republicanas.</p>
+          <div class="cards-grid-7" id="desaciertosGrid">
+            <!-- populated by JS -->
+          </div>
+        </div>
+        <aside data-notes style="display:none">Ahora examinamos los desaciertos de la democracia ecuatoriana. Entre ellos figuran: la corrupción en procesos electorales, como el caso Casaña del dos mil diecisiete con presunta compra de votos; la manipulación mediática o censura encubierta por concentración de medios y desinformación; la baja participación y apatía electoral, especialmente creciente en jóvenes; la concentración del poder en un solo partido o líder, con riesgo de autoritarismo; la violación o restricción de derechos por intereses políticos, como estados de excepción mal justificados; la desinformación y noticias falsas que impactan en la opinión pública y en el voto; y la discriminación persistente en la práctica, con brechas por etnia, género y región. Reconocer estas sombras con honestidad es el primer paso para corregirlas y fortalecer las instituciones republicanas. Cada estudiante debería poder ejemplificar al menos un desacierto.</aside>
+      </section>
+
+      <!-- ============ SLIDE 9 — DESAFÍOS INSTITUCIONALES ============ -->
+      <section class="slide" id="slide-9" data-index="8">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Diagnóstico actual · Institucional y político</div>
+          <h2 class="slide-title" style="font-size:32px">Desafíos institucionales y políticos</h2>
+          <div class="divider-gold"></div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-soft);margin-bottom:6px;max-width:920px">Las instituciones democráticas del Ecuador enfrentan tensiones estructurales que ponen a prueba su solidez. A continuación, cinco nudos críticos que cualquier propuesta ciudadana seria debe considerar.</p>
+          <div class="cards-grid-5">
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v6c0 5 3 9 10 9s10-4 10-9V7l-10-5z"/><path d="M9 12l2 2 4-4"/></svg></div>
+              <div class="c5-num">01</div>
+              <div class="c5-title">Alta corrupción estructural</div>
+              <div class="c5-desc">Casos en todos los niveles del Estado. El caso Sobornos 2012-2016 destapó una red de financiación ilícita que erosionó la confianza ciudadana y demostró los límites del control institucional.</div>
+              <div class="c5-tag">Caso Sobornos 2012-2016</div>
+            </div>
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9M12 15v0"/></svg></div>
+              <div class="c5-num">02</div>
+              <div class="c5-title">Fragmentación política</div>
+              <div class="c5-desc">Más de 15 partidos con inscritos vigentes y falta de consensos estables para gobernar. La fragmentación dificulta formar mayorías, aprobar leyes y sostener políticas de Estado a largo plazo.</div>
+              <div class="c5-tag">+15 partidos vigentes</div>
+            </div>
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8h14M8 8L4 14M16 8l4 6M4 14h16"/></svg></div>
+              <div class="c5-num">03</div>
+              <div class="c5-title">Débil independencia judicial</div>
+              <div class="c5-desc">Jueces y fiscales sometidos a presiones políticas y económicas. La percepción de justicia condicionada debilita el Estado de Derecho y aleja a la ciudadanía del sistema de justicia formal.</div>
+              <div class="c5-tag">Presiones externas</div>
+            </div>
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 6V4h6v2M9 14l2 2 4-4"/></svg></div>
+              <div class="c5-num">04</div>
+              <div class="c5-title">Manipulación electoral</div>
+              <div class="c5-desc">Denuncias sobre falta de transparencia en el conteo y en la organización de los comicios. Aunque el sistema electoral se ha modernizado, persisten reclamos que el CNE debe atender con rigor.</div>
+              <div class="c5-tag">Transparencia del CNE</div>
+            </div>
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18M5 5l14 14M19 5L5 19"/></svg></div>
+              <div class="c5-num">05</div>
+              <div class="c5-title">Inestabilidad política</div>
+              <div class="c5-desc">Cambios frecuentes de autoridades y destituciones presidenciales: Bucaram en 1997, Gutiérrez en 2005 y Lasso en 2023. La inestabilidad erosiona la previsibilidad que toda democracia necesita.</div>
+              <div class="c5-tag">3 destituciones recientes</div>
+            </div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">Esta diapositiva aborda cinco desafíos institucionales y políticos de la democracia ecuatoriana. Primero, la alta corrupción estructural, presente en todos los niveles del Estado, con el caso Sobornos dos mil doce-dos mil dieciséis como ejemplo emblemático. Segundo, la fragmentación política: más de quince partidos con inscritos vigentes y falta de consensos para gobernar. Tercero, la débil independencia judicial, con jueces y fiscales sometidos a presiones políticas y económicas. Cuarto, la manipulación electoral, con denuncias sobre falta de transparencia en el conteo y en la organización de los comicios. Quinto, la inestabilidad política, evidenciada en las destituciones presidenciales de Bucaram en mil novecientos noventa y siete, Gutiérrez en dos mil cinco y Lasso en dos mil veintitrés. Estos cinco nudos críticos deben ser considerados en cualquier propuesta ciudadana seria.</aside>
+      </section>
+
+      <!-- ============ SLIDE 10 — DESAFÍOS SOCIALES ============ -->
+      <section class="slide" id="slide-10" data-index="9">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Diagnóstico actual · Social y económico</div>
+          <h2 class="slide-title" style="font-size:32px">Desafíos sociales y económicos</h2>
+          <div class="divider-gold"></div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-soft);margin-bottom:6px;max-width:920px">Las instituciones no flotan en el aire: se sostienen en una sociedad con condiciones de vida dignas. Estos cinco desafíos sociales y económicos condicionan la calidad real de nuestra democracia.</p>
+          <div class="cards-grid-5">
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3 9 8 9s8-4 8-9V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+              <div class="c5-num">01</div>
+              <div class="c5-title">Crisis de seguridad y violencia</div>
+              <div class="c5-desc">Aumento del crimen organizado, bandas y narcotráfico. Los estados de excepción se han vuelto frecuentes y reflejan la gravedad del problema, especialmente en zonas fronterizas y puertos.</div>
+              <div class="c5-tag">Estados de excepción frecuentes</div>
+            </div>
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg></div>
+              <div class="c5-num">02</div>
+              <div class="c5-title">Desigualdad regional</div>
+              <div class="c5-desc">Falta de inversión y servicios básicos en zonas rurales y periféricas. Las brechas entre sierra, costa, oriente y regiones insulares limitan el ejercicio real de derechos ciudadanos.</div>
+              <div class="c5-tag">Brecha rural-urbana</div>
+            </div>
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V6a2 2 0 0 1 2-2h7v15M4 19h7M4 19l2-2M14 9h4l2 2v8h-6M9 9v0M7 13h2M16 19v0"/></svg></div>
+              <div class="c5-num">03</div>
+              <div class="c5-title">Escasa educación cívica</div>
+              <div class="c5-desc">Desconocimiento generalizado de derechos, deberes y mecanismos de participación. Muchos ciudadanos no saben cómo activar una auditoría ciudadana, una acción de protección o una silla vacía.</div>
+              <div class="c5-tag">Analfabetismo cívico</div>
+            </div>
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18M5 5l14 14M19 5L5 19"/></svg></div>
+              <div class="c5-num">04</div>
+              <div class="c5-title">Protestas sociales polarizadas</div>
+              <div class="c5-desc">Paros nacionales como los de 2019 y 2022 sin canales de diálogo efectivo. La polarización endurece posiciones y dificulta acuerdos democráticos estables entre actores diversos.</div>
+              <div class="c5-tag">Paros 2019 y 2022</div>
+            </div>
+            <div class="card5">
+              <div class="c5-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9 9 4 9 9z"/></svg></div>
+              <div class="c5-num">05</div>
+              <div class="c5-title">Baja confianza en instituciones</div>
+              <div class="c5-desc">Percepción ciudadana de que el sistema político no responde a las necesidades reales. La desconfianza alimentada abre puertas al populismo y debilita la legitimidad democrática.</div>
+              <div class="c5-tag">Crisis de legitimidad</div>
+            </div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">En esta diapositiva analizamos cinco desafíos sociales y económicos de la democracia ecuatoriana. Primero, la crisis de seguridad y violencia, con aumento del crimen organizado, bandas y narcotráfico, y estados de excepción frecuentes. Segundo, la desigualdad regional, con falta de inversión y servicios básicos en zonas rurales y periféricas, lo que limita el ejercicio real de derechos. Tercero, la escasa educación cívica: muchos ciudadanos desconocen sus derechos, deberes y mecanismos de participación. Cuarto, las protestas sociales polarizadas, como los paros nacionales de dos mil diecinueve y dos mil veintidós, sin canales de diálogo efectivo. Quinto, la baja confianza ciudadana en las instituciones, percepción de que el sistema político no responde a las necesidades reales. Estos cinco desafíos condicionan la calidad real de nuestra democracia y deben orientar nuestra propuesta ciudadana.</aside>
+      </section>
+
+      <!-- ============ SLIDE 11 — TABLA COMPARATIVA ============ -->
+      <section class="slide" id="slide-11" data-index="10">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Síntesis · Pasado y presente en tensión</div>
+          <h2 class="slide-title" style="font-size:32px">Pasado ↔ Presente: continuidades y riesgos</h2>
+          <div class="divider-gold"></div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-soft);margin-bottom:6px;max-width:920px">La tabla siguiente cruza seis herencias grecorromanas con su pervivencia actual en Ecuador y los riesgos que las amenazan. Permite visualizar, de un vistazo, qué está vivo y qué está en juego.</p>
+          <div class="compare-table">
+            <div class="compare-head">
+              <div class="col1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>Herencia grecorromana</div>
+              <div class="col2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9 9 4 9 9z"/></svg>Pervive en Ecuador hoy</div>
+              <div class="col3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>En riesgo</div>
+            </div>
+            <div class="compare-body">
+              <div class="compare-row">
+                <div class="col1">Ágora / Ekklesía</div>
+                <div class="col2">Cabildos, asambleas comunitarias, sillas vacías</div>
+                <div class="col3">Espacio público cooptado por intereses privados</div>
+              </div>
+              <div class="compare-row">
+                <div class="col1">Senado republicano</div>
+                <div class="col2">Asamblea Nacional (137 asambleístas)</div>
+                <div class="col3">Fragmentación y bloqueos legislativos</div>
+              </div>
+              <div class="compare-row">
+                <div class="col1">Ley escrita (XII Tablas)</div>
+                <div class="col2">Constitución 2008, CÓDIGO jurídico</div>
+                <div class="col3">Reformas constitucionales para fines políticos</div>
+              </div>
+              <div class="compare-row">
+                <div class="col1">División de poderes (Montesquieu)</div>
+                <div class="col2">5 Funciones del Estado</div>
+                <div class="col3">Independencia judicial en cuestión</div>
+              </div>
+              <div class="compare-row">
+                <div class="col1">Ciudadanía (civitas)</div>
+                <div class="col2">Ciudadanía universal con derechos y deberes</div>
+                <div class="col3">Apatía, abstención, desinformación</div>
+              </div>
+              <div class="compare-row">
+                <div class="col1">Res publica</div>
+                <div class="col2">República del Ecuador</div>
+                <div class="col3">Concentración del poder y personalismo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">Esta tabla comparativa permite visualizar de un vistazo las continuidades y los riesgos de nuestra democracia. El ágora y la ekklesía perviven hoy en cabildos, asambleas comunitarias y sillas vacías, pero están amenazados cuando el espacio público es cooptado por intereses privados. El Senado republicano se prolonga en la Asamblea Nacional de ciento treinta y siete asambleístas, pero sufre fragmentación y bloqueos legislativos. La ley escrita de las XII Tablas pervive en la Constitución de dos mil ocho y el CÓDIGO jurídico, pero está en riesgo cuando se proponen reformas constitucionales para fines políticos. La división de poderes de Montesquieu se amplía en las cinco funciones del Estado, pero la independencia judicial está en cuestión. La civitas romana pervive como ciudadanía universal con derechos y deberes, pero sufre apatía y desinformación. La res publica es hoy la República del Ecuador, amenazada por la concentración del poder.</aside>
+      </section>
+
+      <!-- ============ SLIDE 12 — PROPUESTA CIUDADANA ============ -->
+      <section class="slide" id="slide-12" data-index="11">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Aplicación · Nuestra propuesta ciudadana</div>
+          <h2 class="slide-title" style="font-size:32px">Nuestra propuesta como ciudadanos — ¿Y si yo decidiera?</h2>
+          <div class="divider-gold"></div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-soft);margin-bottom:6px;max-width:920px">Todo diagnóstico cobra sentido cuando se traduce en acción. Este es un modelo de propuesta ciudadana concreta, con diagnóstico, propuesta, implementación e impacto esperado. Úsenlo como base para construir la propia en el lapbook.</p>
+          <div class="propuesta-grid">
+            <div class="propuesta-card">
+              <div class="pc-num">1</div>
+              <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M8 11h6M11 8v6"/></svg>
+              <div class="pc-title">Diagnóstico</div>
+              <div class="pc-text">El problema que identificamos es la <strong>baja participación juvenil</strong> en procesos electorales y de control social. En las últimas elecciones, el abstencionismo entre jóvenes de 16-29 años superó el 25%.</div>
+            </div>
+            <div class="propuesta-card">
+              <div class="pc-num">2</div>
+              <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12c1 1 1 2 1 3h6c0-1 0-2 1-3a7 7 0 0 0-4-12z"/></svg>
+              <div class="pc-title">Propuesta</div>
+              <div class="pc-text">Nuestra solución innovadora consiste en crear <strong>Consejos Estudiantiles de Vigilancia Cívica</strong> en cada colegio del país, integrados por estudiantes de BGU, que realicen seguimiento mensual a un servicio público local (salud, seguridad, transporte) y publiquen un informe ciudadano.</div>
+            </div>
+            <div class="propuesta-card">
+              <div class="pc-num">3</div>
+              <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l3-9 9 3-3 9-9-3zM12 12l6 6M3 12l6 6"/></svg>
+              <div class="pc-title">Implementación</div>
+              <div class="pc-text">Se podría ejecutar mediante:</div>
+              <ul class="pc-list">
+                <li>Coordinación con el CPCCS para capacitación de los estudiantes.</li>
+                <li>Alianzas con gobiernos locales para acceso a información pública.</li>
+                <li>Publicación trimestral del informe en una plataforma digital abierta.</li>
+                <li>Presentación anual ante la Asamblea Nacional juvenil.</li>
+              </ul>
+            </div>
+            <div class="propuesta-card">
+              <div class="pc-num">4</div>
+              <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <div class="pc-title">Impacto esperado</div>
+              <div class="pc-text">Los beneficios serían: formación cívica práctica para los estudiantes; reducción de la apatía política en jóvenes; control ciudadano efectivo sobre lo público; y la formación de una <strong>nueva generación de líderes comprometidos con la democracia</strong>.</div>
+            </div>
+          </div>
+          <div class="propuesta-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v6c0 5 3 9 10 9s10-4 10-9V7l-10-5z"/><path d="M9 12l2 2 4-4"/></svg>
+            <div class="ph-text">El verdadero ejercicio democrático empieza cuando <strong>pasamos de espectadores a protagonistas</strong>: la propuesta ciudadana convierte el diagnóstico en acción.</div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">Esta diapositiva presenta un modelo completo de propuesta ciudadana. El diagnóstico: el problema que identificamos es la baja participación juvenil en procesos electorales y de control social, con un abstencionismo entre jóvenes de dieciséis a veintinueve años que superó el veinticinco por ciento en las últimas elecciones. La propuesta: crear Consejos Estudiantiles de Vigilancia Cívica en cada colegio del país, integrados por estudiantes de BGU, que realicen seguimiento mensual a un servicio público local y publiquen un informe ciudadano. La implementación se ejecuta mediante cuatro pasos: coordinación con el CPCCS, alianzas con gobiernos locales, publicación trimestral en plataforma digital y presentación anual ante la Asamblea Nacional juvenil. El impacto esperado: formación cívica práctica, reducción de la apatía política, control ciudadano efectivo y una nueva generación de líderes comprometidos. Esta plantilla debe servir como base para que cada grupo construya su propia propuesta en el lapbook.</aside>
+      </section>
+
+      <!-- ============ SLIDE 13 — CIERRE CREATIVO ============ -->
+      <section class="slide" id="slide-13" data-index="12">
+        <div class="slide-inner">
+          <div class="cierre-emblem">
+            <svg viewBox="0 0 100 100" fill="none">
+              <!-- Owl of wisdom / civic eye -->
+              <circle cx="50" cy="50" r="42" stroke="#C9A961" stroke-width="2" fill="none"/>
+              <circle cx="50" cy="50" r="32" stroke="#C9A961" stroke-width="1" fill="none" opacity="0.5"/>
+              <path d="M30 50 Q50 30 70 50 Q50 70 30 50 Z" fill="#C9A961" opacity="0.2"/>
+              <circle cx="50" cy="50" r="8" fill="#C9A961"/>
+              <circle cx="50" cy="50" r="3" fill="#1E3A5F"/>
+              <path d="M50 8 L50 18 M50 82 L50 92 M8 50 L18 50 M82 50 L92 50" stroke="#C9A961" stroke-width="2"/>
+            </svg>
+          </div>
+          <p class="cierre-sintesis">La democracia no se hereda,<br><span class="accent">se aprende y se ejerce.</span></p>
+          <div class="cierre-rule"></div>
+          <div class="cierre-reflexiones">
+            <div class="reflex-card">
+              <div class="rc-num">01</div>
+              <div class="rc-text">La democracia <strong>nació en Grecia</strong> como idea y se <strong>institucionalizó en Roma</strong> como república: dos modos complementarios de entender el poder del pueblo.</div>
+            </div>
+            <div class="reflex-card">
+              <div class="rc-num">02</div>
+              <div class="rc-text">En Ecuador, las <strong>5 Funciones del Estado</strong> prolongan esa herencia, pero enfrentan desafíos reales de corrupción, fragmentación y desigualdad.</div>
+            </div>
+            <div class="reflex-card">
+              <div class="rc-num">03</div>
+              <div class="rc-text">Como ciudadanos, nuestra <strong>voz y participación</strong> son el mejor antídoto contra la apatía y la corrupción. Sin ciudadanos activos, no hay democracia.</div>
+            </div>
+          </div>
+          <div class="cierre-poem">
+            "Democracia no es un derecho conquistado, sino una práctica diaria renovada."
+          </div>
+        </div>
+        <aside data-notes style="display:none">Llegamos al cierre creativo de nuestra presentación. La frase síntesis que debemos recordar es: la democracia no se hereda, se aprende y se ejerce. Tres reflexiones finales resumen nuestro recorrido. Primera: la democracia nació en Grecia como idea y se institucionalizó en Roma como república, dos modos complementarios de entender el poder del pueblo. Segunda: en Ecuador, las cinco Funciones del Estado prolongan esa herencia, pero enfrentan desafíos reales de corrupción, fragmentación política y desigualdad social. Tercera: como ciudadanos, nuestra voz y participación son el mejor antídoto contra la apatía y la corrupción. Sin ciudadanos activos no hay democracia posible. Cerramos con un pensamiento poético: democracia no es un derecho conquistado, sino una práctica diaria renovada. Invitemos a los estudiantes a reflexionar sobre cómo aplicarán esto en su vida diaria.</aside>
+      </section>
+
+      <!-- ============ SLIDE 14 — QUIZ ============ -->
+      <section class="slide" id="slide-14" data-index="13">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Verificación · Quiz ciudadano</div>
+          <h2 class="slide-title" style="font-size:32px">Quiz de verificación — ¿Qué aprendimos?</h2>
+          <div class="divider-gold"></div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-soft);margin-bottom:6px;max-width:920px">Selecciona la opción correcta en cada pregunta. Recibirás feedback inmediato. Al final, verás tu puntaje acumulado y podrás reiniciar el quiz.</p>
+          <div class="quiz-wrap">
+            <div class="quiz-grid" id="quizGrid">
+              <!-- populated by JS -->
+            </div>
+            <div class="quiz-score">
+              <div>Puntaje acumulado</div>
+              <div><span class="score-num" id="quizScore">0</span> / 4</div>
+              <button class="quiz-reset" id="quizReset">Reiniciar</button>
+            </div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">Esta es la actividad de verificación final. Tenemos cuatro preguntas de opción múltiple. La primera: ¿qué institución ateniense era la asamblea soberana que votaba las leyes? La respuesta correcta es la Ekklesía, no la Boule ni el Areópago. La segunda: ¿qué magistrados romanos ejercían el poder ejecutivo en pareja, elegidos anualmente? La respuesta correcta son los Cónsules. La tercera: ¿cuántas Funciones del Estado establece la Constitución del Ecuador de dos mil ocho? La respuesta correcta es cinco. La cuarta: ¿qué palabra latina significa "cosa pública" y da nombre a la república? La respuesta correcta es res publica. Pidan a los estudiantes que respondan individualmente y luego discutan en grupo las respuestas correctas. Cada respuesta correcta suma un punto. El puntaje final permite autoevaluar la comprensión de los conceptos clave de la ADA.</aside>
+      </section>
+
+      <!-- ============ SLIDE 15 — BIBLIOGRAFÍA ============ -->
+      <section class="slide" id="slide-15" data-index="14">
+        <div class="slide-inner">
+          <div class="slide-eyebrow">Cierre · Fuentes y créditos</div>
+          <h2 class="slide-title" style="font-size:32px">Bibliografía y cierre</h2>
+          <div class="divider-gold"></div>
+          <div class="biblio-grid">
+            <div class="biblio-list">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v16M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4M4 20h12"/></svg>
+                Referencias bibliográficas (formato APA)
+              </h3>
+              <div class="biblio-entry">
+                <span class="be-author">Asamblea Constituyente de Montecristi.</span> <span class="be-year">(2008).</span> <span class="be-title">Constitución de la República del Ecuador.</span> Quito: Asamblea Constituyente.
+              </div>
+              <div class="biblio-entry">
+                <span class="be-author">Aristotle.</span> <span class="be-year">(Siglo IV a.C.).</span> <span class="be-title">La Constitución de los atenienses.</span>
+              </div>
+              <div class="biblio-entry">
+                <span class="be-author">Cicerón, M. T.</span> <span class="be-year">(Siglo I a.C.).</span> <span class="be-title">De Republica.</span>
+              </div>
+              <div class="biblio-entry">
+                <span class="be-author">Dahl, R. A.</span> <span class="be-year">(1999).</span> <span class="be-title">La democracia: una guía para los ciudadanos.</span> Taurus.
+              </div>
+              <div class="biblio-entry">
+                <span class="be-author">Ottati, A.</span> <span class="be-year">(2025).</span> <span class="be-title">Lapbook: Democracia Ayer y Hoy.</span> Colegio Logos Academy.
+              </div>
+              <div class="biblio-entry">
+                <span class="be-author">Consejo Nacional Electoral del Ecuador.</span> <span class="be-year">(2023).</span> <span class="be-title">Resultados electorales.</span> <span class="be-link">https://www.cne.gob.ec</span>
+              </div>
+              <div class="biblio-entry">
+                <span class="be-author">IDEA International.</span> <span class="be-year">(2024).</span> <span class="be-title">Informe sobre el Estado de la Democracia en Ecuador.</span> <span class="be-link">https://www.idea.int</span>
+              </div>
+            </div>
+            <div class="cierre-final">
+              <svg class="cf-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Logos Academy Shield -->
+                <path d="M15 8 L85 8 L85 55 Q85 85 50 95 Q15 85 15 55 Z" fill="#1A237B" stroke="#C9A961" stroke-width="1.5"/>
+                <clipPath id="shieldClose"><path d="M15 8 L85 8 L85 55 Q85 85 50 95 Q15 85 15 55 Z"/></clipPath>
+                <rect x="12" y="6" width="80" height="48" fill="#8B1538" clip-path="url(#shieldClose)"/>
+                <line x1="85" y1="8" x2="15" y2="56" stroke="#C9A961" stroke-width="1" opacity="0.6"/>
+                <g fill="#FFFFFF">
+                  <polygon points="50,18 51.5,23 57,23 52.5,26 54,31 50,28 46,31 47.5,26 43,23 48.5,23"/>
+                  <polygon points="35,30 36.5,35 42,35 37.5,38 39,43 35,40 31,43 32.5,38 28,35 33.5,35"/>
+                  <polygon points="65,30 66.5,35 72,35 67.5,38 69,43 65,40 61,43 62.5,38 58,35 63.5,35"/>
+                </g>
+                <g stroke="#FFFFFF" stroke-width="1.2" fill="none" clip-path="url(#shieldClose)">
+                  <ellipse cx="50" cy="70" rx="28" ry="18"/>
+                  <ellipse cx="50" cy="70" rx="12" ry="18"/>
+                  <line x1="22" y1="70" x2="78" y2="70"/>
+                </g>
+              </svg>
+              <h3 class="cf-title">Democracia: <span class="accent">Ayer, Hoy y Siempre</span><br>— porque la libertad se cuida cada día.</h3>
+              <div class="cf-rule"></div>
+              <p class="cf-credit">
+                Presentación elaborada para la <strong>ADA de Historia &amp; Educación para la Ciudadanía</strong><br>
+                Colegio Logos Academy · Individuos y Sociedades · BGU<br>
+                Colegio Logos Academy, 2025.
+              </p>
+            </div>
+          </div>
+        </div>
+        <aside data-notes style="display:none">Cerramos nuestra presentación con la bibliografía y los créditos. Las fuentes consultadas siguen el formato APA e incluyen: la Constitución de la República del Ecuador de dos mil ocho, la Constitución de los atenienses de Aristóteles, el De Republica de Cicerón, La democracia: una guía para los ciudadanos de Robert Dahl, el Lapbook Democracia Ayer y Hoy de Ottati del dos mil veinticinco, los resultados electorales del Consejo Nacional Electoral del Ecuador disponibles en www punto cne punto gob punto ec, y el Informe sobre el Estado de la Democracia en Ecuador de IDEA International del dos mil veinticuatro disponible en www punto idea punto int. La frase final que deben llevarse es: Democracia Ayer, Hoy y Siempre, porque la libertad se cuida cada día. Esta presentación fue elaborada para la ADA de Historia y Educación para la Ciudadanía del Colegio Logos Academy. Gracias por su atención.</aside>
+      </section>
+
+    </div><!-- /slides-container -->
+
+    <!-- Topbar controls -->
+    <div id="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Mostrar/ocultar índice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <div class="topbar-right">
+        <button class="icon-btn" id="notesBtn" aria-label="Notas del orador">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z M4 8h16M9 4v16M14 12h4M14 16h4"/></svg>
+        </button>
+        <button class="icon-btn" id="fsBtn" aria-label="Pantalla completa">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Nav arrows -->
+    <button class="nav-arrow prev" id="prevBtn" aria-label="Diapositiva anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <button class="nav-arrow next" id="nextBtn" aria-label="Diapositiva siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+
+    <!-- Progress bar -->
+    <div id="progress-track">
+      <div id="progress-fill"></div>
+    </div>
+    <div id="slide-counter"><span class="current" id="curNum">1</span> / <span id="totNum">15</span></div>
+  </main>
+
+  <!-- ============ SPEAKER NOTES PANEL ============ -->
+  <aside id="notes-panel">
+    <div class="np-head">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z M4 8h16M9 4v16M14 12h4M14 16h4"/></svg>
+        Notas del orador
+      </h3>
+      <button class="np-close" id="npClose" aria-label="Cerrar panel">×</button>
+    </div>
+    <div class="np-body">
+      <div class="np-slide-title" id="npTitle"></div>
+      <div class="np-text" id="npText"></div>
+    </div>
+    <div class="np-foot">Guion verbatim · ~80-120 palabras por diapositiva</div>
+  </aside>
+
+  <!-- ============ CARD MODAL (for grid flipcards) ============ -->
+  <div class="card-modal" id="cardModal">
+    <div class="card-modal-inner">
+      <button class="card-modal-close" id="cmClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="card-modal-icon" id="cmIcon"></div>
+      <div class="card-modal-tag" id="cmTag"></div>
+      <h3 class="card-modal-title" id="cmTitle"></h3>
+      <p class="card-modal-text" id="cmText"></p>
+      <div class="card-modal-extra" id="cmExtra"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* =========================================================
+   DEMOCRACIA: AYER Y HOY — Lógica de interactividad
+   ========================================================= */
+(function(){
+  'use strict';
+
+  // ---------- DATA ----------
+  const TOC = [
+    {n:'01', title:'Portada'},
+    {n:'02', title:'Introducción y ADA'},
+    {n:'03', title:'Grecia y Roma'},
+    {n:'04', title:'Línea de tiempo'},
+    {n:'05', title:'5 Funciones (intro)'},
+    {n:'06', title:'Funciones en detalle'},
+    {n:'07', title:'Aciertos democráticos'},
+    {n:'08', title:'Desaciertos democráticos'},
+    {n:'09', title:'Desafíos institucionales'},
+    {n:'10', title:'Desafíos sociales'},
+    {n:'11', title:'Pasado ↔ Presente'},
+    {n:'12', title:'Propuesta ciudadana'},
+    {n:'13', title:'Lo que aprendimos'},
+    {n:'14', title:'Quiz de verificación'},
+    {n:'15', title:'Bibliografía y cierre'}
+  ];
+
+  const TIMELINE = [
+    {year:'508 a.C.', era:'Atenas · Antigüedad', tag:'Democracia directa', title:'Reformas de Clístenes en Atenas', text:'Clístenes instaura la democracia directa al reorganizar a los ciudadanos en diez tribus territoriales, rompiendo el poder de los clanes aristocráticos y abriendo la participación política a la Ekklesía.'},
+    {year:'462 a.C.', era:'Atenas · Antigüedad', tag:'Siglo de oro', title:'Perfeccionamiento democrático bajo Pericles', text:'Bajo el liderazgo de Pericles, la democracia ateniense alcanza su madurez: se introduce la mishtos (pago por cargo público) que permite incluso a los ciudadanos más pobres participar en la asamblea y en la heliea.'},
+    {year:'509 a.C.', era:'Roma · Antigüedad', tag:'República', title:'Fundación de la República romana', text:'Los patricios romanos expulsan al último rey etrusco, Tarquinio el Soberbio, y establecen la res publica: el poder pasa a ser "cosa pública", ejercido por magistrados elegidos anualmente.'},
+    {year:'450 a.C.', era:'Roma · Antigüedad', tag:'Derecho escrito', title:'Ley de las XII Tablas', text:'Primer cuerpo escrito del derecho romano, redactado por los decenviros para limitar la arbitrariedad de los patricios. Se exponía públicamente en el Foro para que todos los ciudadanos pudieran conocerla.'},
+    {year:'212 d.C.', era:'Imperio romano', tag:'Civitas universal', title:'Constitutio Antoniniana', text:'El emperador Caracalla concede la ciudadanía romana a todos los hombres libres del Imperio, extendiendo la civitas más allá de la península itálica y unificando jurídicamente el mundo romano.'},
+    {year:'1215', era:'Inglaterra · Edad Media', tag:'Constitucionalismo', title:'Carta Magna (Inglaterra)', text:'El rey Juan sin Tierra acepta limitar su poder real ante los barones. Establece que ni el rey está por encima de la ley: germen del constitucionalismo moderno y del debido proceso.'},
+    {year:'1787', era:'EE.UU. · Modernidad', tag:'Separación de poderes', title:'Constitución de EE.UU.', text:'Primera constitución escrita moderna que aplica la separación de poderes teorizada por Montesquieu. Establece ejecutivo, legislativo y judicial como poderes distintos, equilibrados y contrapesados.'},
+    {year:'1789', era:'Francia · Modernidad', tag:'Derechos humanos', title:'Declaración de los Derechos del Hombre y del Ciudadano', text:'La Revolución francesa proclama que los hombres nacen y son libres e iguales en derechos. Influye decisivamente en el constitucionalismo republicano latinoamericano del siglo XIX.'},
+    {year:'1830', era:'Ecuador · República', tag:'Constitución fundacional', title:'Primera Constitución del Ecuador', text:'Nace la República del Ecuador en la Convención de Riobamba. La primera Constitución organiza el Estado bajo principios representativos, aunque con sufragio muy restringido.'},
+    {year:'1978', era:'Ecuador · S. XX', tag:'Retorno democrático', title:'Retorno a la democracia en Ecuador', text:'Tras una década de dictaduras militares, se aprueba una nueva Constitución y se restablece el régimen civil. Inicia la llamada "tercera democracia" ecuatoriana, vigente hasta hoy.'},
+    {year:'1998', era:'Ecuador · S. XX', tag:'Derechos colectivos', title:'Constitución con reconocimiento de pueblos indígenas', text:'Por primera vez, la Constitución reconoce a los pueblos indígenas y afroecuatorianos como parte del Estado, junto con sus derechos colectivos: idioma, territorio, justicia indígena y organización propia.'},
+    {year:'2008', era:'Ecuador · S. XXI', tag:'Constitución de Montecristi', title:'Constitución de Montecristi', text:'Nueva Constitución que incorpora el Sumak Kawsay (buen vivir), derechos de la naturaleza, la Función de Transparencia y Control Social, y más de 90 derechos. Amplía las 5 Funciones del Estado.'},
+    {year:'2025', era:'Ecuador · Actualidad', tag:'Democracia contemporánea', title:'Ecuador democrático contemporáneo', text:'El país enfrenta desafíos simultáneos de seguridad, corrupción y participación. La democracia ecuatoriana se pone a prueba: necesita ciudadanos activos, instituciones fuertes y educación cívica permanente.'}
+  ];
+
+  const ACIERTOS = [
+    {icon:'vote', title:'Voto universal', text:'Sufragio sin distinción de género, etnia o condición social. En Ecuador, el voto femenino se conquista en 1929, entre los primeros de América Latina.', extra:'En 1929, Matilde Hidalgo de Prócel fue pionera en ejercer el voto femenino en Ecuador y América Latina.'},
+    {icon:'press', title:'Libertad de expresión y prensa independiente', text:'Garantía constitucional para opinar, publicar y recibir información libremente. Es columna vertebral del control ciudadano y de la deliberación democrática.', extra:'Reconocida en el Art. 66 de la Constitución de 2008 como derecho fundamental.'},
+    {icon:'participa', title:'Participación ciudadana local', text:'Presupuestos participativos, audiencias públicas, sillas vacías y cabildos abiertos. Permiten incidir directamente en decisiones del territorio.', extra:'La "silla vacía" es un mecanismo ecuatoriano único: un representante ciudadano en cada gobierno autónomo descentralizado.'},
+    {icon:'peace', title:'Alternancia pacífica en el poder', text:'Transferencia ordenada de gobierno tras comicios. Aunque con crisis, se ha mantenido el principio republicano de que el poder se transmite por votos, no por armas.', extra:'Desde 1979 se han sucedido más de 10 gobiernos civiles por vía electoral.'},
+    {icon:'rights', title:'Protección de derechos humanos', text:'La Constitución de 2008 reconoce más de 90 derechos: civiles, políticos, económicos, sociales, culturales, colectivos y de la naturaleza.', extra:'Ecuador fue el primer país del mundo en reconocer derechos a la naturaleza (Art. 71-74).'},
+    {icon:'edu', title:'Educación cívica en centros educativos', text:'Formación ciudadana como eje transversal del currículo nacional. La ADA que hoy trabajan es un ejemplo concreto de esa apuesta formativa.', extra:'El Art. 27 de la Constitución define a la educación como "un derecho humano fundamental garantizado por el Estado".'},
+    {icon:'equal', title:'Leyes que promueven la igualdad', text:'Cuotas de género en candidaturas, programas de inclusión y leyes contra la discriminación. Avances normativos para cerrar brechas históricas.', extra:'La cuota mínima del 50% de participación política femenina está garantizada por la Ley Orgánica Electoral.'}
+  ];
+
+  const DESACIERTOS = [
+    {icon:'corrupt', title:'Corrupción en procesos electorales', text:'Caso Casaña (2017): presunta compra de votos y financiamción ilícito. Erosiona la confianza en la limpieza electoral y exige mayor control del CNE.', extra:'El caso Casaña involucró presunta compra de votos en la provincia de Esmeraldas durante las elecciones seccionales de 2017.'},
+    {icon:'media', title:'Manipulación mediática o censura encubierta', text:'Concentración de medios y desinformación. Cuando pocos controlan la información, se debilita el pluralismo indispensable para la deliberación.', extra:'Estudios de Fundamedios documentan ciclos recurrentes de presión gubernamental sobre medios críticos.'},
+    {icon:'apathy', title:'Baja participación y apatía electoral', text:'Abstencionismo creciente, sobre todo en jóvenes. La apatía es síntoma de desencanto: muchos ciudadanos sienten que su voto no cambia nada.', extra:'En el sufragio facultativo (16-17 años y mayores de 65) la abstención supera frecuentemente el 50%.'},
+    {icon:'concent', title:'Concentración del poder en un solo partido o líder', text:'Riesgo de autoritarismo cuando una fuerza hegemónica captura instituciones. La democracia requiere contrapesos reales, no solo formales.', extra:'La Constitución de 2008 prevé la revocatoria del mandato como mecanismo de control frente al abuso.'},
+    {icon:'restrict', title:'Violación o restricción de derechos por intereses políticos', text:'Estados de excepción mal justificados, criminalización de la protesta o restricciones a la movilización. El equilibrio entre seguridad y libertad es delicado.', extra:'La Corte Constitucional debe revisar automáticamente todo decreto de estado de excepción.'},
+    {icon:'fake', title:'Desinformación y noticias falsas', text:'Impacto en la opinión pública y en el voto. Las redes sociales amplifican rumores sin filtro, debilitando el debate informado que requiere toda democracia.', extra:'Un estudio de 2023 detectó campañas coordinadas de desinformación durante los comicios ecuatorianos.'},
+    {icon:'discrim', title:'Discriminación persistente en la práctica', text:'Brechas por etnia, género, región. Aunque la Constitución prohíbe la discriminación, las desigualdades reales siguen marcando el ejercicio efectivo de derechos.', extra:'El INEC documenta brechas salariales y de acceso a servicios que afectan sobre todo a poblaciones indígenas y afroecuatorianas.'}
+  ];
+
+  // SVG icon factory for cards
+  function svgIcon(name){
+    const ICONS = {
+      vote:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 6V4h6v2M9 14l2 2 4-4"/></svg>',
+      press:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h13v16H6a2 2 0 0 1-2-2V4z M17 8h3v10a2 2 0 0 1-2 2M9 8h5M9 12h5M9 16h3"/></svg>',
+      participa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 11h6M19 8v6"/></svg>',
+      peace:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 5l14 14M19 5L5 19"/></svg>',
+      rights:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3 9 8 9s8-4 8-9V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>',
+      edu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5L2 7z M6 10v6c0 2 3 4 6 4s6-2 6-4v-6"/></svg>',
+      equal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9h14M5 15h14M12 2v20"/></svg>',
+      corrupt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v6c0 5 3 9 10 9s10-4 10-9V7l-10-5z"/><path d="M9 9l6 6M15 9l-6 6"/></svg>',
+      media:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 14h6M7 17h4"/></svg>',
+      apathy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5-2 4-2 4 2 4 2M9 9h.01M15 9h.01"/></svg>',
+      concent:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg>',
+      restrict:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11V7a7 7 0 0 1 14 0v4M5 11h14v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8z M12 15v2"/></svg>',
+      fake:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10M12 6v6M12 16h.01M22 2L2 22"/></svg>',
+      discrim:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="9" r="3"/><path d="M3 20v-1a5 5 0 0 1 10 0v1M16 4v6M19 7h-6"/></svg>'
+    };
+    return ICONS[name] || ICONS.vote;
+  }
+
+  // ---------- ELEMENTS ----------
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  const tocEl = document.getElementById('toc');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const menuBtn = document.getElementById('menuBtn');
+  const sidebar = document.getElementById('sidebar');
+  const notesBtn = document.getElementById('notesBtn');
+  const notesPanel = document.getElementById('notes-panel');
+  const npClose = document.getElementById('npClose');
+  const fsBtn = document.getElementById('fsBtn');
+  const startBtn = document.getElementById('startBtn');
+  const progressFill = document.getElementById('progress-fill');
+  const curNumEl = document.getElementById('curNum');
+  const totNumEl = document.getElementById('totNum');
+  const npTitle = document.getElementById('npTitle');
+  const npText = document.getElementById('npText');
+
+  let currentSlide = 0;
+
+  // ---------- INIT ----------
+  totNumEl.textContent = totalSlides;
+
+  // Build TOC
+  TOC.forEach((item, idx)=>{
+    const div = document.createElement('div');
+    div.className = 'toc-item';
+    div.dataset.index = idx;
+    div.innerHTML = `<span class="num">${item.n}</span><span>${item.title}</span>`;
+    div.addEventListener('click', ()=> goToSlide(idx));
+    tocEl.appendChild(div);
+  });
+
+  // Build timeline
+  const timelinePoints = document.getElementById('timelinePoints');
+  TIMELINE.forEach((t, idx)=>{
+    const point = document.createElement('div');
+    point.className = 'tl-point' + (idx===0?' active':'');
+    point.dataset.index = idx;
+    point.innerHTML = `<div class="tl-dot"></div><div class="tl-year">${t.year}</div>`;
+    point.addEventListener('click', ()=> selectTimeline(idx));
+    timelinePoints.appendChild(point);
+  });
+
+  // Build aciertos grid
+  const aciertosGrid = document.getElementById('aciertosGrid');
+  ACIERTOS.forEach((a, idx)=>{
+    const card = document.createElement('div');
+    card.className = 'card-item';
+    card.dataset.kind = 'acierto';
+    card.dataset.index = idx;
+    card.innerHTML = `
+      <div class="card-num-corner">${String(idx+1).padStart(2,'0')}</div>
+      <div class="card-icon">${svgIcon(a.icon)}</div>
+      <div class="card-title">${a.title}</div>
+      <div class="card-desc">${a.text}</div>
+      <div class="card-flip-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M21 3l-9 9M9 21H3v-6M3 21l9-9"/></svg>Ampliar</div>
+    `;
+    card.addEventListener('click', ()=> openCardModal('acierto', idx));
+    aciertosGrid.appendChild(card);
+  });
+
+  // Build desaciertos grid
+  const desaciertosGrid = document.getElementById('desaciertosGrid');
+  DESACIERTOS.forEach((d, idx)=>{
+    const card = document.createElement('div');
+    card.className = 'card-item';
+    card.dataset.kind = 'desacierto';
+    card.dataset.index = idx;
+    card.innerHTML = `
+      <div class="card-num-corner">${String(idx+1).padStart(2,'0')}</div>
+      <div class="card-icon">${svgIcon(d.icon)}</div>
+      <div class="card-title">${d.title}</div>
+      <div class="card-desc">${d.text}</div>
+      <div class="card-flip-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M21 3l-9 9M9 21H3v-6M3 21l9-9"/></svg>Ampliar</div>
+    `;
+    card.addEventListener('click', ()=> openCardModal('desacierto', idx));
+    desaciertosGrid.appendChild(card);
+  });
+
+  // Build quiz
+  const QUIZ = [
+    {
+      q: '¿Qué institución ateniense era la asamblea soberana que votaba las leyes?',
+      options: ['Boule','Ekklesía','Areópago','Senado'],
+      correct: 1,
+      explain: 'La Ekklesía era la asamblea popular soberana con poder legislativo; votaba leyes, declaraba guerras y firmaba tratados. La Boule era el consejo de los quinientos; el Areópago, un tribunal aristocrático.'
+    },
+    {
+      q: '¿Qué magistrados romanos ejercían el poder ejecutivo en pareja, elegidos anualmente?',
+      options: ['Pretores','Tribunos','Cónsules','Dictadores'],
+      correct: 2,
+      explain: 'Los Cónsules eran dos magistrados supremos elegidos anualmente que ejercían el poder ejecutivo y comandaban los ejércitos. Su paridad y corta duración limitaban ambiciones personales.'
+    },
+    {
+      q: '¿Cuántas Funciones del Estado establece la Constitución del Ecuador de 2008?',
+      options: ['3','4','5','6'],
+      correct: 2,
+      explain: 'La Constitución de 2008 establece 5 Funciones: Ejecutiva, Legislativa, Judicial, Electoral y de Transparencia y Control Social (Art. 225). Las dos últimas son propias del modelo ecuatoriano.'
+    },
+    {
+      q: '¿Qué palabra latina significa "cosa pública" y da nombre a la república?',
+      options: ['Res publica','Civitas','Imperium','Mos maiorum'],
+      correct: 0,
+      explain: 'Res publica significa literalmente "cosa pública". De ahí proviene el término "república". La civitas designa la ciudadanía; el imperium, el mando; el mos maiorum, la tradición de los antepasados.'
+    }
+  ];
+  const quizGrid = document.getElementById('quizGrid');
+  let quizScore = 0;
+  let answered = [false,false,false,false];
+  QUIZ.forEach((item, qIdx)=>{
+    const card = document.createElement('div');
+    card.className = 'quiz-card';
+    let opts = '';
+    item.options.forEach((opt, oIdx)=>{
+      opts += `<div class="quiz-option" data-q="${qIdx}" data-o="${oIdx}"><span class="opt-letter">${String.fromCharCode(97+oIdx)}</span>${opt}</div>`;
+    });
+    card.innerHTML = `
+      <div class="qnum">${qIdx+1}</div>
+      <div class="quiz-question">${item.q}</div>
+      <div class="quiz-options">${opts}</div>
+      <div class="quiz-feedback"></div>
+    `;
+    quizGrid.appendChild(card);
+  });
+  const quizScoreEl = document.getElementById('quizScore');
+  const quizResetBtn = document.getElementById('quizReset');
+
+  document.querySelectorAll('.quiz-option').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      const qIdx = parseInt(opt.dataset.q);
+      const oIdx = parseInt(opt.dataset.o);
+      if(answered[qIdx]) return;
+      answered[qIdx] = true;
+      const item = QUIZ[qIdx];
+      const card = opt.closest('.quiz-card');
+      const feedback = card.querySelector('.quiz-feedback');
+      const allOpts = card.querySelectorAll('.quiz-option');
+      allOpts.forEach(o=>o.classList.add('disabled'));
+      if(oIdx === item.correct){
+        opt.classList.add('correct');
+        feedback.className = 'quiz-feedback ok show';
+        feedback.innerHTML = '<strong>Correcto.</strong> ' + item.explain;
+        quizScore++;
+        quizScoreEl.textContent = quizScore;
+      } else {
+        opt.classList.add('wrong');
+        const correctOpt = allOpts[item.correct];
+        correctOpt.classList.add('correct');
+        feedback.className = 'quiz-feedback err show';
+        feedback.innerHTML = '<strong>No exactamente.</strong> ' + item.explain;
+      }
+    });
+  });
+  quizResetBtn.addEventListener('click', ()=>{
+    quizScore = 0;
+    answered = [false,false,false,false];
+    quizScoreEl.textContent = '0';
+    document.querySelectorAll('.quiz-option').forEach(o=>{
+      o.classList.remove('correct','wrong','disabled');
+    });
+    document.querySelectorAll('.quiz-feedback').forEach(f=>{
+      f.className = 'quiz-feedback'; f.innerHTML = '';
+    });
+  });
+
+  // ---------- FLIPCARDS ----------
+  document.querySelectorAll('[data-flip]').forEach(fc=>{
+    fc.addEventListener('click', ()=> fc.classList.toggle('flipped'));
+  });
+
+  // ---------- TABS ----------
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  tabBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const idx = btn.dataset.tab;
+      tabBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      tabContents.forEach(c=>c.classList.remove('active'));
+      document.querySelector(`.tab-content[data-content="${idx}"]`).classList.add('active');
+    });
+  });
+
+  // ---------- TIMELINE SELECT ----------
+  function selectTimeline(idx){
+    document.querySelectorAll('.tl-point').forEach(p=>p.classList.remove('active'));
+    document.querySelector(`.tl-point[data-index="${idx}"]`).classList.add('active');
+    const t = TIMELINE[idx];
+    document.getElementById('tlYear').textContent = t.year;
+    document.getElementById('tlEra').textContent = t.era;
+    document.getElementById('tlTag').textContent = t.tag;
+    document.getElementById('tlTitle').textContent = t.title;
+    document.getElementById('tlText').textContent = t.text;
+  }
+
+  // ---------- CARD MODAL ----------
+  const cardModal = document.getElementById('cardModal');
+  const cmClose = document.getElementById('cmClose');
+  function openCardModal(kind, idx){
+    const data = kind==='acierto' ? ACIERTOS[idx] : DESACIERTOS[idx];
+    document.getElementById('cmIcon').innerHTML = svgIcon(data.icon);
+    document.getElementById('cmIcon').style.color = kind==='acierto' ? 'var(--green)' : 'var(--red)';
+    document.getElementById('cmTag').textContent = kind==='acierto' ? 'Acierto democrático' : 'Desacierto democrático';
+    document.getElementById('cmTitle').textContent = data.title;
+    document.getElementById('cmText').textContent = data.text;
+    document.getElementById('cmExtra').textContent = data.extra;
+    cardModal.classList.add('show');
+  }
+  cmClose.addEventListener('click', ()=> cardModal.classList.remove('show'));
+  cardModal.addEventListener('click', (e)=>{ if(e.target === cardModal) cardModal.classList.remove('show'); });
+
+  // ---------- NAVIGATION ----------
+  function goToSlide(idx){
+    if(idx<0 || idx>=totalSlides || idx===currentSlide) return;
+    const direction = idx > currentSlide ? 1 : -1;
+    slides[currentSlide].classList.remove('active');
+    if(direction === -1){
+      slides[currentSlide].classList.add('prev');
+    } else {
+      slides[currentSlide].classList.remove('prev');
+    }
+    currentSlide = idx;
+    setTimeout(()=>{
+      slides.forEach(s=> s.classList.remove('prev'));
+      slides[currentSlide].classList.add('active');
+    }, 50);
+    updateUI();
+  }
+
+  function updateUI(){
+    // Update TOC active
+    document.querySelectorAll('.toc-item').forEach((t,i)=>{
+      t.classList.toggle('active', i===currentSlide);
+    });
+    // Update progress
+    const pct = ((currentSlide+1)/totalSlides)*100;
+    progressFill.style.width = pct + '%';
+    // Update counter
+    curNumEl.textContent = currentSlide+1;
+    // Update arrows
+    prevBtn.disabled = currentSlide===0;
+    nextBtn.disabled = currentSlide===totalSlides-1;
+    // Update notes
+    const activeSlide = slides[currentSlide];
+    const notesEl = activeSlide.querySelector('aside[data-notes]');
+    if(notesEl){
+      npTitle.textContent = TOC[currentSlide].n + ' · ' + TOC[currentSlide].title;
+      npText.textContent = notesEl.textContent.trim();
+    }
+    // Auto-scroll active TOC into view
+    const activeToc = document.querySelector('.toc-item.active');
+    if(activeToc) activeToc.scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
+
+  prevBtn.addEventListener('click', ()=> goToSlide(currentSlide-1));
+  nextBtn.addEventListener('click', ()=> goToSlide(currentSlide+1));
+  startBtn.addEventListener('click', ()=> goToSlide(1));
+
+  // Keyboard
+  document.addEventListener('keydown', (e)=>{
+    if(cardModal.classList.contains('show')){
+      if(e.key==='Escape') cardModal.classList.remove('show');
+      return;
+    }
+    if(e.key==='ArrowRight' || e.key===' ' || e.key==='PageDown'){
+      e.preventDefault();
+      goToSlide(currentSlide+1);
+    } else if(e.key==='ArrowLeft' || e.key==='PageUp'){
+      e.preventDefault();
+      goToSlide(currentSlide-1);
+    } else if(e.key==='Home'){
+      e.preventDefault();
+      goToSlide(0);
+    } else if(e.key==='End'){
+      e.preventDefault();
+      goToSlide(totalSlides-1);
+    } else if(e.key==='f' || e.key==='F'){
+      toggleFullscreen();
+    } else if(e.key==='n' || e.key==='N'){
+      toggleNotes();
+    } else if(e.key==='m' || e.key==='M'){
+      toggleSidebar();
+    } else if(e.key>='1' && e.key<='9'){
+      const n = parseInt(e.key)-1;
+      if(n<totalSlides) goToSlide(n);
+    }
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e)=>{ touchStartX = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', (e)=>{
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx)>50){
+      if(dx<0) goToSlide(currentSlide+1);
+      else goToSlide(currentSlide-1);
+    }
+  }, {passive:true});
+
+  // ---------- UI TOGGLES ----------
+  function toggleSidebar(){ sidebar.classList.toggle('collapsed'); }
+  function toggleNotes(){ notesPanel.classList.toggle('open'); notesBtn.classList.toggle('active', notesPanel.classList.contains('open')); }
+  function toggleFullscreen(){
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen().catch(()=>{});
+      fsBtn.classList.add('active');
+    } else {
+      document.exitFullscreen();
+      fsBtn.classList.remove('active');
+    }
+  }
+  document.addEventListener('fullscreenchange', ()=>{
+    fsBtn.classList.toggle('active', !!document.fullscreenElement);
+  });
+
+  menuBtn.addEventListener('click', toggleSidebar);
+  notesBtn.addEventListener('click', toggleNotes);
+  npClose.addEventListener('click', toggleNotes);
+  fsBtn.addEventListener('click', toggleFullscreen);
+
+  // ---------- START ----------
+  // Default sidebar collapsed on small screens
+  if(window.innerWidth < 1100){
+    sidebar.classList.add('collapsed');
+  }
+  slides[0].classList.add('active');
+  updateUI();
+  // Init first timeline detail (already shown by HTML defaults)
+
+  console.log('Democracia: Ayer y Hoy — presentación cargada. ' + totalSlides + ' diapositivas.');
+
+})();
+</script>
+
+</body>
+</html>
