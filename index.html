@@ -1216,31 +1216,118 @@ body{
         <div class="slide-inner">
           <div class="cover-content">
             <div class="cover-emblem">
-              <!-- Logos Academy Institutional Logo -->
-              <svg viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Shield -->
-                <path d="M20 10 L120 10 L120 75 Q120 120 70 135 Q20 120 20 75 Z" fill="#1A237B" stroke="#0a1142" stroke-width="2.5"/>
-                <clipPath id="shieldCover"><path d="M20 10 L120 10 L120 75 Q120 120 70 135 Q20 120 20 75 Z"/></clipPath>
-                <rect x="15" y="8" width="115" height="68" fill="#8B1538" clip-path="url(#shieldCover)"/>
-                <line x1="120" y1="10" x2="20" y2="78" stroke="#0a1142" stroke-width="1.5"/>
-                <!-- Stars -->
-                <g fill="#FFFFFF">
-                  <polygon points="70,22 72,28 78,28 73,32 75,38 70,34 65,38 67,32 62,28 68,28"/>
-                  <polygon points="48,36 50,42 56,42 51,46 53,52 48,48 43,52 45,46 40,42 46,42"/>
-                  <polygon points="92,36 94,42 100,42 95,46 97,52 92,48 87,52 89,46 84,42 90,42"/>
+              <!-- Democracia Vector Logo - Estilo Clásico (Griego/Romano) -->
+              <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Democracia: herencia griega y romana">
+                <defs>
+                  <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#C9A961"/>
+                    <stop offset="50%" style="stop-color:#E8D4A0"/>
+                    <stop offset="100%" style="stop-color:#A8863D"/>
+                  </linearGradient>
+                  <linearGradient id="civicGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1E3A5F"/>
+                    <stop offset="100%" style="stop-color:#15283F"/>
+                  </linearGradient>
+                </defs>
+                <!-- Columna griega izquierda (Dórica) -->
+                <g transform="translate(40, 30)" opacity="0.9">
+                  <!-- Base (estilóbato) -->
+                  <rect x="-10" y="140" width="60" height="12" fill="url(#goldGrad)"/>
+                  <rect x="-15" y="152" width="70" height="8" fill="#C9A961" opacity="0.7"/>
+                  <!-- Fuste con entasis sutil -->
+                  <path d="M5 140 L8 20 Q15 10 25 20 Q35 10 42 20 L45 140 Z" fill="url(#civicGrad)" stroke="#C9A961" stroke-width="1.5"/>
+                  <!-- Caneluras (3 líneas) -->
+                  <line x1="15" y1="25" x2="15" y2="135" stroke="#15283F" stroke-width="1" opacity="0.5"/>
+                  <line x1="25" y1="25" x2="25" y2="135" stroke="#15283F" stroke-width="1" opacity="0.5"/>
+                  <line x1="35" y1="25" x2="35" y2="135" stroke="#15283F" stroke-width="1" opacity="0.5"/>
+                  <!-- Capiteles (equino + ábaco) -->
+                  <rect x="-8" y="10" width="56" height="8" fill="#C9A961"/>
+                  <rect x="-12" y="2" width="64" height="10" fill="#1E3A5F"/>
+                  <!-- Frontón triangular -->
+                  <polygon points="-18,2 25,-18 68,2" fill="#1E3A5F" stroke="#C9A961" stroke-width="1.5"/>
+                  <!-- Acroterio central -->
+                  <circle cx="25" cy="-22" r="5" fill="#C9A961"/>
                 </g>
-                <!-- Globe -->
-                <g stroke="#FFFFFF" stroke-width="1.5" fill="none" clip-path="url(#shieldCover)">
-                  <ellipse cx="70" cy="95" rx="38" ry="25"/>
-                  <ellipse cx="70" cy="95" rx="17" ry="25"/>
-                  <line x1="32" y1="95" x2="108" y2="95"/>
-                  <path d="M42,82 Q70,90 98,82"/>
-                  <path d="M42,108 Q70,100 98,108"/>
+
+                <!-- Columna griega derecha (Dórica) - espejo -->
+                <g transform="translate(320, 30)" opacity="0.9">
+                  <rect x="-10" y="140" width="60" height="12" fill="url(#goldGrad)"/>
+                  <rect x="-15" y="152" width="70" height="8" fill="#C9A961" opacity="0.7"/>
+                  <path d="M5 140 L8 20 Q15 10 25 20 Q35 10 42 20 L45 140 Z" fill="url(#civicGrad)" stroke="#C9A961" stroke-width="1.5"/>
+                  <line x1="15" y1="25" x2="15" y2="135" stroke="#15283F" stroke-width="1" opacity="0.5"/>
+                  <line x1="25" y1="25" x2="25" y2="135" stroke="#15283F" stroke-width="1" opacity="0.5"/>
+                  <line x1="35" y1="25" x2="35" y2="135" stroke="#15283F" stroke-width="1" opacity="0.5"/>
+                  <rect x="-8" y="10" width="56" height="8" fill="#C9A961"/>
+                  <rect x="-12" y="2" width="64" height="10" fill="#1E3A5F"/>
+                  <polygon points="-18,2 25,-18 68,2" fill="#1E3A5F" stroke="#C9A961" stroke-width="1.5"/>
+                  <circle cx="25" cy="-22" r="5" fill="#C9A961"/>
                 </g>
-                <!-- Text: LOGOS -->
-                <text x="140" y="68" fill="#1A237B" font-family="Playfair Display, Georgia, serif" font-size="52" font-weight="700" letter-spacing="6">LOGOS</text>
-                <!-- Text: ACADEMY -->
-                <text x="144" y="100" fill="#1A237B" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="400" letter-spacing="12">ACADEMY</text>
+
+                <!-- Águila romana central (SPQR) -->
+                <g transform="translate(200, 100)" opacity="0.95">
+                  <!-- Alas extendidas -->
+                  <path d="M0 0 Q-50 -30 -80 10 Q-60 20 -40 0 Q-50 30 -80 70 Q-60 80 -40 50 Q-50 100 -80 140 Q-30 110 0 80" fill="#1E3A5F" stroke="#C9A961" stroke-width="2"/>
+                  <path d="M0 0 Q50 -30 80 10 Q60 20 40 0 Q50 30 80 70 Q60 80 40 50 Q50 100 80 140 Q30 110 0 80" fill="#1E3A5F" stroke="#C9A961" stroke-width="2"/>
+                  <!-- Cuerpo -->
+                  <ellipse cx="0" cy="40" rx="18" ry="35" fill="#15283F" stroke="#C9A961" stroke-width="1.5"/>
+                  <!-- Cabeza -->
+                  <circle cx="0" cy="5" r="12" fill="#15283F" stroke="#C9A961" stroke-width="1.5"/>
+                  <!-- Pico -->
+                  <path d="M0 10 L8 18 L0 16 L-8 18 Z" fill="#C9A961"/>
+                  <!-- Ojo -->
+                  <circle cx="-3" cy="3" r="2" fill="#C9A961"/>
+                  <circle cx="3" cy="3" r="2" fill="#C9A961"/>
+                  <!-- Garras sosteniendo fasces -->
+                  <g transform="translate(0, 75)">
+                    <path d="M-15 0 L-25 15 M15 0 L25 15" stroke="#C9A961" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Fasces (haz de varas con hacha) -->
+                    <rect x="-6" y="-30" width="12" height="35" fill="#8B2E1C" stroke="#C9A961" stroke-width="1"/>
+                    <line x1="-6" y1="-20" x2="6" y2="-20" stroke="#C9A961" stroke-width="1"/>
+                    <line x1="-6" y1="-10" x2="6" y2="-10" stroke="#C9A961" stroke-width="1"/>
+                    <line x1="-6" y1="0" x2="6" y2="0" stroke="#C9A961" stroke-width="1"/>
+                    <!-- Hacha -->
+                    <path d="M-6 -30 Q-18 -40 -6 -35 Q-18 -25 -6 -30" fill="#A63D2A" stroke="#C9A961" stroke-width="1.5"/>
+                  </g>
+                  <!-- Corona cívica (roble) sobre la cabeza -->
+                  <g transform="translate(0, -18)" fill="#3F6B45" stroke="#C9A961" stroke-width="0.5">
+                    <ellipse cx="-10" cy="0" rx="6" ry="4"/>
+                    <ellipse cx="0" cy="-2" rx="6" ry="4"/>
+                    <ellipse cx="10" cy="0" rx="6" ry="4"/>
+                    <ellipse cx="-5" cy="-6" rx="5" ry="3"/>
+                    <ellipse cx="5" cy="-6" rx="5" ry="3"/>
+                  </g>
+                </g>
+
+                <!-- Balanza de la justicia (centro, entre columnas) -->
+                <g transform="translate(200, 165)" opacity="0.85">
+                  <!-- Soporte -->
+                  <line x1="0" y1="-40" x2="0" y2="0" stroke="#C9A961" stroke-width="3" stroke-linecap="round"/>
+                  <polygon points="0,-40 -8,-32 8,-32" fill="#C9A961"/>
+                  <!-- Brazos -->
+                  <line x1="-35" y1="-35" x2="35" y2="-35" stroke="#C9A961" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Platos -->
+                  <g transform="translate(-35, -35)">
+                    <path d="M0 0 Q-12 10 -8 20 Q0 25 8 20 Q12 10 0 0" fill="#1E3A5F" stroke="#C9A961" stroke-width="1.5"/>
+                    <line x1="-10" y1="5" x2="10" y2="5" stroke="#C9A961" stroke-width="1" opacity="0.5"/>
+                  </g>
+                  <g transform="translate(35, -35)">
+                    <path d="M0 0 Q-12 10 -8 20 Q0 25 8 20 Q12 10 0 0" fill="#1E3A5F" stroke="#C9A961" stroke-width="1.5"/>
+                    <line x1="-10" y1="5" x2="10" y2="5" stroke="#C9A961" stroke-width="1" opacity="0.5"/>
+                  </g>
+                </g>
+
+                <!-- Texto "DEMOCRACIA" arco superior -->
+                <text x="200" y="25" text-anchor="middle" fill="url(#goldGrad)" font-family="Playfair Display, Georgia, serif" font-size="28" font-weight="700" letter-spacing="8">DEMOCRACIA</text>
+                <!-- Texto "AYER & HOY" arco inferior -->
+                <text x="200" y="185" text-anchor="middle" fill="#C9A961" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="500" letter-spacing="6">AYER & HOY</text>
+
+                <!-- Laurel decorativo base -->
+                <g transform="translate(200, 175)" fill="#3F6B45" stroke="#C9A961" stroke-width="0.5" opacity="0.6">
+                  <ellipse cx="-60" cy="0" rx="25" ry="8" transform="rotate(-25)"/>
+                  <ellipse cx="60" cy="0" rx="25" ry="8" transform="rotate(25)"/>
+                  <ellipse cx="-30" cy="-5" rx="20" ry="6" transform="rotate(-15)"/>
+                  <ellipse cx="30" cy="-5" rx="20" ry="6" transform="rotate(15)"/>
+                </g>
               </svg>
             </div>
             <div class="cover-eyebrow">Colegio Logos Academy · ADA de Historia</div>
