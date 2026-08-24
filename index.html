@@ -1097,6 +1097,72 @@ body{
 }
 .cierre-final .cf-credit strong{color:var(--gold);font-weight:600}
 
+/* ====================================================
+   IMÁGENES DE CONTENIDO — galerías y detalle
+   ==================================================== */
+.gallery-strip{
+  display:flex;gap:14px;justify-content:center;align-items:flex-start;
+  flex-wrap:wrap;margin-top:14px;padding-top:12px;
+  border-top:1px dashed rgba(201,169,97,0.6);
+}
+.gallery-strip figure{margin:0;width:118px;text-align:center}
+.gallery-strip img{
+  width:100%;height:92px;object-fit:cover;object-position:center top;
+  border-radius:8px;border:1px solid rgba(201,169,97,0.7);
+  box-shadow:0 4px 10px rgba(42,24,16,0.18);display:block;
+}
+.gallery-strip figcaption{
+  font-size:16px;line-height:1.25;color:var(--ink-soft);margin-top:5px;
+}
+.gsep{width:1px;align-self:stretch;background:rgba(201,169,97,0.6);margin:2px 8px}
+
+.tl-detail-img{
+  display:none;align-items:flex-start;justify-content:center;gap:12px;
+  padding-left:18px;border-left:1px dashed rgba(201,169,97,0.6);
+}
+.tl-detail.has-img{grid-template-columns:160px 1fr auto}
+.tl-detail.has-img .tl-detail-img{display:flex}
+.tl-detail-img .tli{text-align:center;width:150px}
+.tl-detail-img img{
+  width:150px;height:100px;object-fit:cover;border-radius:8px;
+  border:1px solid rgba(201,169,97,0.7);
+  box-shadow:0 4px 10px rgba(42,24,16,0.18);display:block;
+}
+.tl-detail-img .tlicap{
+  font-size:16px;line-height:1.25;color:var(--ink-soft);margin-top:5px;
+}
+
+.echo-strip{
+  display:flex;gap:26px;justify-content:center;align-items:flex-start;
+  flex-wrap:wrap;margin-top:16px;
+}
+.echo-strip figure{margin:0;text-align:center;width:300px;max-width:100%}
+.echo-strip img{
+  width:100%;height:140px;object-fit:cover;border-radius:10px;
+  border:1px solid rgba(201,169,97,0.7);
+  box-shadow:0 5px 14px rgba(42,24,16,0.2);display:block;
+}
+.echo-strip figcaption{
+  font-size:16px;line-height:1.35;color:var(--ink-soft);margin-top:6px;
+}
+.echo-strip .etag{
+  display:inline-block;font-size:16px;font-weight:700;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--civic);
+  margin-bottom:5px;
+}
+
+.card-modal-photo{display:none;flex-direction:column;align-items:center;margin:0 0 14px}
+.card-modal-photo.show{display:flex}
+.card-modal-photo img{
+  width:180px;height:180px;object-fit:cover;object-position:center top;
+  border-radius:50%;border:3px solid var(--gold);
+  box-shadow:0 6px 16px rgba(42,24,16,0.25);
+}
+.card-modal-photo .pmcap{
+  font-size:16px;font-style:italic;color:var(--ink-soft);
+  margin-top:8px;text-align:center;line-height:1.3;
+}
+
 /* ====== ANIMATIONS ====== */
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -1126,6 +1192,8 @@ body{
   .tab-content.active{grid-template-columns:1fr}
   .divisor-grid{grid-template-columns:repeat(2,1fr)}
   .tl-detail{grid-template-columns:1fr}
+  .tl-detail.has-img{grid-template-columns:1fr}
+  .tl-detail-img{border-left:none;border-top:1px dashed rgba(201,169,97,0.6);padding-left:0;padding-top:12px;justify-content:flex-start}
   .tl-detail-left{border-right:none;border-bottom:1px dashed rgba(201,169,97,0.6);padding-bottom:10px;padding-right:0}
 }
 
@@ -1382,6 +1450,15 @@ body{
               </div>
             </div>
           </div>
+          <div class="gallery-strip" aria-label="Galería de personajes e instituciones de Grecia y Roma">
+            <figure><img src="img/cleisthenes.jpg" alt="Busto de Clístenes, reformador de la democracia ateniense" loading="lazy"><figcaption>Clístenes</figcaption></figure>
+            <figure><img src="img/pericles.jpg" alt="Busto de Pericles, impulsor del apogeo democrático ateniense" loading="lazy"><figcaption>Pericles</figcaption></figure>
+            <span class="gsep" aria-hidden="true"></span>
+            <figure><img src="img/curia_senate.jpg" alt="Curia Julia, sede del Senado romano" loading="lazy"><figcaption>Curia Julia</figcaption></figure>
+            <figure><img src="img/cesar.jpg" alt="Busto de Julio César" loading="lazy"><figcaption>Julio César</figcaption></figure>
+            <figure><img src="img/augusto.jpg" alt="Estatua de Augusto de Prima Porta" loading="lazy"><figcaption>Augusto</figcaption></figure>
+            <figure><img src="img/corpus_juris.jpg" alt="Manuscrito medieval del Corpus Iuris Civilis" loading="lazy"><figcaption>Corpus Iuris</figcaption></figure>
+          </div>
           <div class="concepts-strip">
             <span class="clabel">Conceptos clave comunes</span>
             <span class="concept-chip">Ley</span>
@@ -1419,6 +1496,7 @@ body{
                 <h3 class="tl-detail-title" id="tlTitle">Reformas de Clístenes en Atenas</h3>
                 <p class="tl-detail-text" id="tlText">Clístenes instaura la democracia directa al reorganizar a los ciudadanos en diez tribus territoriales, rompiendo el poder de los clanes aristocráticos y abriendo la participación política a la Ekklesía.</p>
               </div>
+              <div class="tl-detail-img" id="tlImgWrap"></div>
             </div>
             <div class="tl-influences">
               <span class="ilabel">Influencias visibles grecorromanas hoy</span>
@@ -1772,6 +1850,18 @@ body{
               </div>
             </div>
           </div>
+          <div class="echo-strip" aria-label="Del pasado al presente">
+            <figure>
+              <span class="etag">Pasado</span>
+              <img src="img/pnyx.jpg" alt="La Pnix de Atenas, colina donde se reunía la Ekklesía" loading="lazy">
+              <figcaption>La Pnix de Atenas: la colina donde la Ekklesía votaba directamente las leyes.</figcaption>
+            </figure>
+            <figure>
+              <span class="etag">Presente</span>
+              <img src="img/asamblea_ecuador.jpg" alt="Sede de la Asamblea Nacional del Ecuador en Quito" loading="lazy">
+              <figcaption>Asamblea Nacional del Ecuador: la voluntad ciudadana se canaliza mediante representantes.</figcaption>
+            </figure>
+          </div>
         </div>
         <aside data-notes style="display:none">Esta tabla comparativa permite visualizar de un vistazo las continuidades y los riesgos de nuestra democracia. El ágora y la ekklesía perviven hoy en cabildos, asambleas comunitarias y sillas vacías, pero están amenazados cuando el espacio público es cooptado por intereses privados. El Senado republicano se prolonga en la Asamblea Nacional de ciento treinta y siete asambleístas, pero sufre fragmentación y bloqueos legislativos. La ley escrita de las XII Tablas pervive en la Constitución de dos mil ocho y el CÓDIGO jurídico, pero está en riesgo cuando se proponen reformas constitucionales para fines políticos. La división de poderes de Montesquieu se amplía en las cinco funciones del Estado, pero la independencia judicial está en cuestión. La civitas romana pervive como ciudadanía universal con derechos y deberes, pero sufre apatía y desinformación. La res publica es hoy la República del Ecuador, amenazada por la concentración del poder.</aside>
       </section>
@@ -1988,6 +2078,7 @@ body{
       <div class="card-modal-icon" id="cmIcon"></div>
       <div class="card-modal-tag" id="cmTag"></div>
       <h3 class="card-modal-title" id="cmTitle"></h3>
+      <div class="card-modal-photo" id="cmPhoto"><img id="cmPhotoImg" src="" alt=""><div class="pmcap" id="cmPhotoCap"></div></div>
       <p class="card-modal-text" id="cmText"></p>
       <div class="card-modal-extra" id="cmExtra"></div>
     </div>
@@ -2029,8 +2120,8 @@ body{
     {year:'212 d.C.', era:'Imperio romano', tag:'Civitas universal', title:'Constitutio Antoniniana', text:'El emperador Caracalla concede la ciudadanía romana a todos los hombres libres del Imperio, extendiendo la civitas más allá de la península itálica y unificando jurídicamente el mundo romano.'},
     {year:'1215', era:'Inglaterra · Edad Media', tag:'Constitucionalismo', title:'Carta Magna (Inglaterra)', text:'El rey Juan sin Tierra acepta limitar su poder real ante los barones. Establece que ni el rey está por encima de la ley: germen del constitucionalismo moderno y del debido proceso.'},
     {year:'1787', era:'EE.UU. · Modernidad', tag:'Separación de poderes', title:'Constitución de EE.UU.', text:'Primera constitución escrita moderna que aplica la separación de poderes teorizada por Montesquieu. Establece ejecutivo, legislativo y judicial como poderes distintos, equilibrados y contrapesados.'},
-    {year:'1789', era:'Francia · Modernidad', tag:'Derechos humanos', title:'Declaración de los Derechos del Hombre y del Ciudadano', text:'La Revolución francesa proclama que los hombres nacen y son libres e iguales en derechos. Influye decisivamente en el constitucionalismo republicano latinoamericano del siglo XIX.'},
-    {year:'1830', era:'Ecuador · República', tag:'Constitución fundacional', title:'Primera Constitución del Ecuador', text:'Nace la República del Ecuador en la Convención de Riobamba. La primera Constitución organiza el Estado bajo principios representativos, aunque con sufragio muy restringido.'},
+    {year:'1789', era:'Francia · Modernidad', tag:'Derechos humanos', title:'Declaración de los Derechos del Hombre y del Ciudadano', text:'La Revolución francesa proclama que los hombres nacen y son libres e iguales en derechos. Influye decisivamente en el constitucionalismo republicano latinoamericano del siglo XIX.', imgs:[{src:'img/rights_of_man.jpg',alt:'Grabado de la Declaración de los Derechos del Hombre y del Ciudadano de 1789',cap:'Declaración de los Derechos del Hombre y del Ciudadano'}]},
+    {year:'1830', era:'Ecuador · República', tag:'Constitución fundacional', title:'Primera Constitución del Ecuador', text:'Nace la República del Ecuador en la Convención de Riobamba. La primera Constitución organiza el Estado bajo principios representativos, aunque con sufragio muy restringido.', imgs:[{src:'img/sucre.jpg',alt:'Retrato del mariscal Antonio José de Sucre',cap:'Mariscal Antonio José de Sucre'},{src:'img/flores.jpg',alt:'Retrato del general Juan José Flores',cap:'General Juan José Flores'}]},
     {year:'1978', era:'Ecuador · S. XX', tag:'Retorno democrático', title:'Retorno a la democracia en Ecuador', text:'Tras una década de dictaduras militares, se aprueba una nueva Constitución y se restablece el régimen civil. Inicia la llamada "tercera democracia" ecuatoriana, vigente hasta hoy.'},
     {year:'1998', era:'Ecuador · S. XX', tag:'Derechos colectivos', title:'Constitución con reconocimiento de pueblos indígenas', text:'Por primera vez, la Constitución reconoce a los pueblos indígenas y afroecuatorianos como parte del Estado, junto con sus derechos colectivos: idioma, territorio, justicia indígena y organización propia.'},
     {year:'2008', era:'Ecuador · S. XXI', tag:'Constitución de Montecristi', title:'Constitución de Montecristi', text:'Nueva Constitución que incorpora el Sumak Kawsay (buen vivir), derechos de la naturaleza, la Función de Transparencia y Control Social, y más de 90 derechos. Amplía las 5 Funciones del Estado.'},
@@ -2038,7 +2129,7 @@ body{
   ];
 
   const ACIERTOS = [
-    {icon:'vote', title:'Voto universal', text:'Sufragio sin distinción de género, etnia o condición social. En Ecuador, el voto femenino se conquista en 1929, entre los primeros de América Latina.', extra:'En 1929, Matilde Hidalgo de Prócel fue pionera en ejercer el voto femenino en Ecuador y América Latina.'},
+    {icon:'vote', title:'Voto universal', text:'Sufragio sin distinción de género, etnia o condición social. En Ecuador, el voto femenino se conquista en 1929, entre los primeros de América Latina.', extra:'En 1929, Matilde Hidalgo de Prócel fue pionera en ejercer el voto femenino en Ecuador y América Latina.', photo:{src:'img/matilde_hidalgo.jpg',alt:'Retrato de Matilde Hidalgo de Prócel',cap:'Matilde Hidalgo de Prócel, pionera del voto femenino (1929)'}},
     {icon:'press', title:'Libertad de expresión y prensa independiente', text:'Garantía constitucional para opinar, publicar y recibir información libremente. Es columna vertebral del control ciudadano y de la deliberación democrática.', extra:'Reconocida en el Art. 66 de la Constitución de 2008 como derecho fundamental.'},
     {icon:'participa', title:'Participación ciudadana local', text:'Presupuestos participativos, audiencias públicas, sillas vacías y cabildos abiertos. Permiten incidir directamente en decisiones del territorio.', extra:'La "silla vacía" es un mecanismo ecuatoriano único: un representante ciudadano en cada gobierno autónomo descentralizado.'},
     {icon:'peace', title:'Alternancia pacífica en el poder', text:'Transferencia ordenada de gobierno tras comicios. Aunque con crisis, se ha mantenido el principio republicano de que el poder se transmite por votos, no por armas.', extra:'Desde 1979 se han sucedido más de 10 gobiernos civiles por vía electoral.'},
@@ -2273,6 +2364,15 @@ body{
     document.getElementById('tlTag').textContent = t.tag;
     document.getElementById('tlTitle').textContent = t.title;
     document.getElementById('tlText').textContent = t.text;
+    const det = document.getElementById('tlDetail');
+    const wrap = document.getElementById('tlImgWrap');
+    if(t.imgs && t.imgs.length){
+      det.classList.add('has-img');
+      wrap.innerHTML = t.imgs.map(im=>'<div class="tli"><img src="'+im.src+'" alt="'+im.alt+'" loading="lazy"><div class="tlicap">'+im.cap+'</div></div>').join('');
+    } else {
+      det.classList.remove('has-img');
+      wrap.innerHTML = '';
+    }
   }
 
   // ---------- CARD MODAL ----------
@@ -2286,6 +2386,16 @@ body{
     document.getElementById('cmTitle').textContent = data.title;
     document.getElementById('cmText').textContent = data.text;
     document.getElementById('cmExtra').textContent = data.extra;
+    const ph = document.getElementById('cmPhoto');
+    if(data.photo){
+      document.getElementById('cmPhotoImg').src = data.photo.src;
+      document.getElementById('cmPhotoImg').alt = data.photo.alt;
+      document.getElementById('cmPhotoCap').textContent = data.photo.cap;
+      ph.classList.add('show');
+    } else {
+      document.getElementById('cmPhotoImg').src = '';
+      ph.classList.remove('show');
+    }
     cardModal.classList.add('show');
   }
   cmClose.addEventListener('click', ()=> cardModal.classList.remove('show'));
