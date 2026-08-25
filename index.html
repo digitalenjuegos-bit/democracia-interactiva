@@ -586,6 +586,30 @@ body{
   background:rgba(201,169,97,0.5);border-radius:10px;
   border:1px solid rgba(201,169,97,0.7);
 }
+.tl-thumbs{
+  display:flex;gap:8px;margin-top:12px;min-width:0;
+}
+.tl-thumb{
+  flex:1 1 0;min-width:0;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  background:rgba(255,255,255,0.4);
+  border:1px solid rgba(201,169,97,0.55);border-radius:8px;
+  padding:5px 3px;cursor:pointer;transition:all .25s;
+}
+.tl-thumb img{
+  width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:5px;display:block;
+  max-width:60px;border:1px solid rgba(201,169,97,0.5);
+}
+.tl-thumb-year{
+  font-family:var(--font-display);font-size:16px;font-weight:700;line-height:1;
+  color:var(--civic);white-space:nowrap;
+}
+.tl-thumb:hover{border-color:var(--gold);background:rgba(201,169,97,0.28)}
+.tl-thumb.active{
+  border-color:var(--gold);background:rgba(201,169,97,0.45);
+  box-shadow:0 0 0 2px rgba(201,169,97,0.55);
+}
+.tl-thumb.active .tl-thumb-year{color:var(--red)}
 
 /* ====================================================
    SLIDE 5 — DIVISOR FUNCIONES
@@ -661,7 +685,15 @@ body{
   padding:24px 28px;display:none;
   position:relative;overflow:hidden;
 }
-.tab-content.active{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start}
+.tab-content.active{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start}
+.tab-content.active.has-photo{grid-template-columns:200px minmax(0,1fr) clamp(150px,24%,225px)}
+.tab-photo-box{display:flex;flex-direction:column;gap:6px;min-width:0}
+.tab-photo-box img{
+  width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:8px;
+  border:1px solid rgba(201,169,97,0.7);
+  box-shadow:0 4px 10px rgba(42,24,16,0.18);display:block;
+}
+.tab-photo-cap{font-size:16px;line-height:1.3;color:var(--ink-soft);text-align:center}
 .tab-content::before{
   content:"";position:absolute;top:0;left:0;width:6px;height:100%;
   background:var(--gold);
@@ -1120,9 +1152,9 @@ body{
   display:none;align-items:flex-start;justify-content:center;gap:12px;
   padding-left:18px;border-left:1px dashed rgba(201,169,97,0.6);
 }
-.tl-detail.has-img{grid-template-columns:160px 1fr auto}
+.tl-detail.has-img{grid-template-columns:160px minmax(0,1fr) auto}
 .tl-detail.has-img .tl-detail-img{display:flex}
-.tl-detail-img .tli{text-align:center;width:155px}
+.tl-detail-img .tli{text-align:center;width:200px}
 .tl-detail-img img{
   width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;border-radius:8px;
   border:1px solid rgba(201,169,97,0.7);
@@ -1190,6 +1222,8 @@ body{
   .compare-row > div:not(:last-child){border-right:none;border-bottom:1px dashed rgba(201,169,97,0.5)}
   .tabs-nav{grid-template-columns:repeat(2,1fr)}
   .tab-content.active{grid-template-columns:1fr}
+  .tab-content.active.has-photo{grid-template-columns:1fr}
+  .tab-photo-box img{max-width:340px;margin:0 auto}
   .divisor-grid{grid-template-columns:repeat(2,1fr)}
   .tl-detail{grid-template-columns:1fr}
   .tl-detail.has-img{grid-template-columns:1fr}
@@ -1521,6 +1555,9 @@ body{
               </div>
               <div class="tl-detail-img" id="tlImgWrap"></div>
             </div>
+            <div class="tl-thumbs" id="tlThumbs">
+              <!-- populated by JS -->
+            </div>
             <div class="tl-influences">
               <span class="ilabel">Influencias visibles grecorromanas hoy</span>
               <span class="ichip">División de poderes</span>
@@ -1609,7 +1646,7 @@ body{
               </button>
             </div>
 
-            <div class="tab-content active" data-content="0">
+            <div class="tab-content active has-photo" data-content="0">
               <div class="tab-icon-box">
                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 58h52M10 58V20l22-12 22 12v38M16 58V32M48 58V32M22 58V42h20v16M28 38h8M28 30h8"/></svg>
                 <div class="tname">Función Ejecutiva</div>
@@ -1625,9 +1662,13 @@ body{
                   <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Cónsules romanos (poder ejecutivo colegiado)</span></div>
                 </div>
               </div>
+              <div class="tab-photo-box">
+                <img src="img/carondelet_palacio.jpg" alt="Fachada del Palacio de Carondelet en la Plaza de la Independencia de Quito" loading="lazy">
+                <div class="tab-photo-cap">Palacio de Carondelet, sede del Gobierno nacional (Foto: Cayambe, CC BY-SA 3.0)</div>
+              </div>
             </div>
 
-            <div class="tab-content" data-content="1">
+            <div class="tab-content has-photo" data-content="1">
               <div class="tab-icon-box">
                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8v48M56 8v48M8 8h48M8 32h48M8 56h48M22 8v48M42 8v48M8 20h48"/></svg>
                 <div class="tname">Función Legislativa</div>
@@ -1643,9 +1684,13 @@ body{
                   <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Senado romano + Ekklesía ateniense</span></div>
                 </div>
               </div>
+              <div class="tab-photo-box">
+                <img src="img/asamblea_nacional.jpg" alt="La Asamblea Nacional del Ecuador en Quito" loading="lazy">
+                <div class="tab-photo-cap">Asamblea Nacional del Ecuador, Quito</div>
+              </div>
             </div>
 
-            <div class="tab-content" data-content="2">
+            <div class="tab-content has-photo" data-content="2">
               <div class="tab-icon-box">
                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 6v48M14 18h36M20 18l-10 18M44 18l10 18M10 36h44M16 56h10M38 56h10"/></svg>
                 <div class="tname">Función Judicial</div>
@@ -1661,9 +1706,13 @@ body{
                   <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Pretor romano + Ley de las XII Tablas</span></div>
                 </div>
               </div>
+              <div class="tab-photo-box">
+                <img src="img/corte_nacional_justicia.jpg" alt="Edificio de la Corte Nacional de Justicia en Quito" loading="lazy">
+                <div class="tab-photo-cap">Sede de la Corte Nacional de Justicia, Quito (Foto: Ceancata, CC BY 4.0)</div>
+              </div>
             </div>
 
-            <div class="tab-content" data-content="3">
+            <div class="tab-content has-photo" data-content="3">
               <div class="tab-icon-box">
                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="10" y="14" width="44" height="38" rx="3"/><path d="M22 14V8h20v6M22 30l5 5 12-12"/></svg>
                 <div class="tname">Función Electoral</div>
@@ -1679,9 +1728,13 @@ body{
                   <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Sufragio de la Ekklesía + comicios romanos</span></div>
                 </div>
               </div>
+              <div class="tab-photo-box">
+                <img src="img/cne_posesion_2018.jpg" alt="Ceremonia de posesión de los miembros del Consejo Nacional Electoral" loading="lazy">
+                <div class="tab-photo-cap">Posesión de los miembros del Consejo Nacional Electoral, 2018 (Foto: Fernando Lagla / Asamblea Nacional, CC BY-SA 2.0)</div>
+              </div>
             </div>
 
-            <div class="tab-content" data-content="4">
+            <div class="tab-content has-photo" data-content="4">
               <div class="tab-icon-box">
                 <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="26" cy="26" r="14"/><path d="M36 36l16 16M20 26h12M26 20v12"/></svg>
                 <div class="tname">Transparencia y Control Social</div>
@@ -1696,6 +1749,10 @@ body{
                   <div class="fact-row"><span class="fact-label">Principio rector</span><span class="fact-val">Rendición de cuentas y control ciudadano</span></div>
                   <div class="fact-row"><span class="fact-label">Herencia clásica</span><span class="fact-val">Tribuno de la plebe romano</span></div>
                 </div>
+              </div>
+              <div class="tab-photo-box">
+                <img src="img/cpccs_consejeros.jpg" alt="Consejeras y consejeros del Consejo de Participación Ciudadana y Control Social" loading="lazy">
+                <div class="tab-photo-cap">Consejeras y consejeros del CPCCS, periodo 2019-2023 (Foto: Asamblea Nacional del Ecuador, CC BY-SA 2.0)</div>
               </div>
             </div>
           </div>
@@ -2237,6 +2294,21 @@ body{
     timelinePoints.appendChild(point);
   });
 
+  // Build timeline thumbnails strip (navegación rápida entre eventos)
+  const tlThumbs = document.getElementById('tlThumbs');
+  TIMELINE.forEach((t, idx)=>{
+    const th = document.createElement('button');
+    th.type = 'button';
+    th.className = 'tl-thumb' + (idx===0?' active':'');
+    th.dataset.index = idx;
+    const im = (t.imgs && t.imgs[0]) ? t.imgs[0] : null;
+    const shortYear = t.year.replace(/ (?:a|d)\.C\.$/, '');
+    th.innerHTML = (im ? '<img src="'+im.src+'" alt="" loading="lazy">' : '') +
+      '<span class="tl-thumb-year">'+shortYear+'</span>';
+    th.addEventListener('click', ()=> selectTimeline(idx));
+    tlThumbs.appendChild(th);
+  });
+
   // Build aciertos grid
   const aciertosGrid = document.getElementById('aciertosGrid');
   ACIERTOS.forEach((a, idx)=>{
@@ -2381,6 +2453,9 @@ body{
   function selectTimeline(idx){
     document.querySelectorAll('.tl-point').forEach(p=>p.classList.remove('active'));
     document.querySelector(`.tl-point[data-index="${idx}"]`).classList.add('active');
+    document.querySelectorAll('.tl-thumb').forEach(x=>x.classList.remove('active'));
+    const actThumb = document.querySelector(`.tl-thumb[data-index="${idx}"]`);
+    if(actThumb) actThumb.classList.add('active');
     const t = TIMELINE[idx];
     document.getElementById('tlYear').textContent = t.year;
     document.getElementById('tlEra').textContent = t.era;
